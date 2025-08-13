@@ -14,7 +14,7 @@ This journal itself is a living institution, evolving through use while maintain
 
 To submit institutional documentation:
 1. Review the [Catechism](./catechism.md) - nine questions your documentation must answer
-2. Study the [Specification](./specification.md) - example of complete documentation
+2. Study the [Specification](./submissions/metagov-journal/specification.md) - example of complete documentation
 3. Understand the [Criteria](./criteria.md) - how submissions are evaluated
 4. Follow [Contributing](./CONTRIBUTING.md) - technical submission process
 
