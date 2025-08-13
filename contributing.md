@@ -8,7 +8,7 @@ Welcome! The Metagov Journal publishes peer-reviewed documentation of living ins
 
 1. **Understand the Framework**
    - Read the [Catechism](./catechism.md) carefully
-   - Study the [Specification](./specification.md) example
+   - Study the [Specification](./submissions/metagov-journal/specification.md) example
    - Review [Criteria](./criteria.md) for evaluation standards
 
 2. **Prepare Your Documentation**
