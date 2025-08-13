@@ -6,16 +6,21 @@ This document details the concrete processes for operating the Metagov Journal, 
 
 ### Repository Structure
 ```
-metagov-journal/
-├── Framework documents (this level)
+/
+├── readme.md
+├── background.md
+├── catechism.md
+├── criteria.md
+├── evaluation.md
+├── implementation.md
+├── CONTRIBUTING.md
 ├── submissions/
 │   └── [institution-name]/
 │       ├── manifest.yml
 │       ├── specification.md
-│       ├── supporting/
-│       └── reviews/
+│       └── supporting/
 └── .github/
-    └── Templates and workflows
+    └── workflows and templates
 ```
 
 ### Version Management

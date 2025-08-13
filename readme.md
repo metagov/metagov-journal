@@ -36,7 +36,13 @@ To understand the framework:
 
 ```
 /
-├── Framework Documents (this level)
+├── readme.md
+├── background.md
+├── catechism.md
+├── criteria.md
+├── evaluation.md
+├── implementation.md
+├── CONTRIBUTING.md
 ├── submissions/
 │   └── [institution-name]/
 │       ├── manifest.yml
@@ -67,7 +73,7 @@ Initial Editorial Board:
 ## Quick Links
 
 - **Organization**: [Metagov](https://metagov.org)
-- **Archive**: [Zenodo Community](https://zenodo.org/communities/metagov)
+- **Archive**: `tbd` (preprint server and/or overlay journal link)
 - **Discussions**: [GitHub Discussions](https://github.com/metagov/metagov-journal/discussions)
 - **Issues**: [GitHub Issues](https://github.com/metagov/journal/issues)
 
@@ -97,6 +103,7 @@ Initial Editorial Board:
 
 ["Attribution-ShareAlike 4.0 International'](LICENSE)
 
+All institutions published in the Metagov Journal via this github based framework will inherit CC-BY-SA-4 license designation, and have the Metagov-Journal Institution as a cited reference.
 
 ## Contact
 
