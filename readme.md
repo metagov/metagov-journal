@@ -97,7 +97,7 @@ Initial Editorial Board:
 ### Metagov Context
 - Tan, J. (2025). ["Introducing the Metagov Journal: Publishing Living Institutions."](https://journal.metagov.org/2025/08/09/metagov-journal.html)
 - [Metagov Website](https://metagov.org): Parent nonprofit advancing digital self-governance
-- [GitHub Organization](https://github.com/metagov/): This living document
+- [GitHub Organization](https://github.com/metagov/): The Github Organization for Metagov where the Metagov Journal is one repository.
 
 ## License
 
