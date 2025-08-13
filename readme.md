@@ -87,7 +87,7 @@ Initial Editorial Board:
 ### Methodological Inspirations
 - Heilmeier, G. (1991). The Heilmeier Catechism. DARPA.
 - Cordes, R,J., Friedman, D,
-& Phelan, S. (2020). ["The Innovator's Catechism: A Tool for Impactful Research."](https://zenodo.org/record/4383230) *Research Practice Methods*.
+& Phelan, S. (2020). ["The Innovator's Catechism: Operations orders for use by early-stage innovation teams"](https://zenodo.org/record/4383230) *Research Practice Methods*.
 
 ### Core Framework Papers
 - Zargham, M. & Ben-Meir, G. (2024). ["Protocols and Institutions"](https://zenodo.org/records/15122312) appear in *Web3 Blockchain Economic Theory,* edited by Melanie Swan, Soichiro Takagi, and Frank Witte.
