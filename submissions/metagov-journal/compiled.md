@@ -59,7 +59,7 @@ The foundational rules emerge from three layers. The Catechism (nine questions) 
 
 ## 5. Field sites
 
-Primary activity occurs at github.com/metagov/journal — submissions, reviews, and discussions. The Metagov website offers organizational context. Joshua Tan's introductory blog post articulates the founding vision.
+The institution operates across connected venues. Primary activity occurs at github.com/metagov/metagov-journal — submissions, reviews, and discussions. The auto-generated wiki is the navigable reader's view, with cross-linked Institution, Person, and Organization pages plus engagement docs. Stable archival citations are planned via Zenodo for DOI assignment. The Metagov website offers organizational context. Joshua Tan's introductory blog post articulates the founding vision.
 
 - [GitHub repository](https://github.com/metagov/metagov-journal) — Primary site for submissions, reviews, and discussion.
 - [Metagov website](https://metagov.org) — Organizational home and mission context.
