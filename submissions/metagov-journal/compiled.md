@@ -10,7 +10,7 @@ The Metagov Journal produces and maintains a peer-reviewed commons of institutio
 
 ## 2. Stakeholders and roles
 
-Authors document institutions they understand deeply, answering the catechism and providing supporting materials. Reviewers evaluate submissions for completeness, clarity, and contribution to knowledge. Joshua Tan, Metagov co-founder, is credited with the founding idea — convening the editorial group and articulating the gap a peer-reviewed venue for living-institution documentation could fill. Michael Zargham serves as lead editor and is credited with the design and development of the catechism framework, review processes, and RDF-native infrastructure. Seth Frey and Ellie Rennie complete the founding editor group with cognitive-science and digital-ethnography perspectives respectively. Readers access documented patterns for learning and adaptation. Liz Barry, Executive Director of Metagov, is responsible for resource allocation and ongoing supervision — assigning staff time, overseeing operations, and ensuring accountability for outcomes; the journal program exists as a result of her organizational support. Metagov itself provides the nonprofit home and mission alignment.
+Authors document institutions they understand deeply, answering the catechism and providing supporting materials. Reviewers evaluate submissions for completeness, clarity, and contribution to knowledge. Joshua Tan, Metagov co-founder, is credited with the founding idea — convening the editorial group and articulating the gap a peer-reviewed venue for living-institution documentation could fill. Ilan Ben-Meir and Natalia Dashan, founding contributors, helped develop the conceptual framework — processing Tan's brainstorming into a concrete design Michael Zargham could implement. Zargham serves as lead editor and is credited with the design and development of the catechism framework, review processes, and RDF-native infrastructure. Seth Frey and Ellie Rennie complete the founding editor group with cognitive-science and digital-ethnography perspectives respectively. Readers access documented patterns for learning and adaptation. Liz Barry, Executive Director of Metagov, is responsible for resource allocation and ongoing supervision — assigning staff time, overseeing operations, and ensuring accountability for outcomes; the journal program exists as a result of her organizational support. Metagov itself provides the nonprofit home and mission alignment.
 
 ### Stakeholders
 
@@ -20,6 +20,8 @@ Authors document institutions they understand deeply, answering the catechism an
 - **Founding Editor**: Ellie Rennie — Founding editor; provides digital-ethnography perspective.
 - **Organizational Sponsor**: Liz Barry — Executive Director of Metagov — credit for resource allocation and ongoing supervision; assigns staff time, oversees operations, and is accountable for program outcomes. The journal program exists as a result of her organizational support.
 - **Organizational Home**: Metagov — Provides nonprofit infrastructure and mission alignment.
+- **Founding Contributor**: Ilan Ben-Meir — Founding contributor — helped develop the conceptual framework, processing Joshua Tan's brainstorming into a concrete design that Michael Zargham could implement.
+- **Founding Contributor**: Natalia Dashan — Founding contributor — helped develop the conceptual framework, processing Joshua Tan's brainstorming into a concrete design that Michael Zargham could implement.
 
 ## 3. Environmental factors
 

@@ -16,9 +16,11 @@
 ## People
 
 - [Ellie Rennie](Person-ellie-rennie)
+- [Ilan Ben-Meir](Person-ilan-ben-meir)
 - [Joshua Tan](Person-joshua-tan)
 - [Liz Barry](Person-liz-barry)
 - [Michael Zargham](Person-michael-zargham)
+- [Natalia Dashan](Person-natalia-dashan)
 - [Seth Frey](Person-seth-frey)
 
 ## Organizations
