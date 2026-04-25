@@ -78,9 +78,9 @@ As author of this draft and current lead editor, I (Michael Zargham) designed an
 
 ## 7. Origins
 
-The journal emerged from Joshua Tan's observation that governance experiments in DAOs, cooperatives, and digital communities generate valuable innovations but lack documentation venues. In late 2024, Tan convened Metagov research directors to design a solution. The founding team brought complementary perspectives: Tan (platform governance), Zargham (systems engineering), Frey (cognitive science), Rennie (digital ethnography).
+The journal emerged from Joshua Tan's observation that governance experiments in DAOs, cooperatives, and digital communities generate valuable innovations but lack documentation venues. In late 2024, Tan convened a founding group to design a solution. The team brought complementary perspectives: Tan (platform governance and the founding idea), Ilan Ben-Meir and Natalia Dashan (conceptual framework development), Zargham (systems engineering and tooling), Frey (cognitive science), Rennie (digital ethnography). The catechism framework emerged through iterative design — processing Tan's framing into a concrete, implementable specification — balancing academic rigor with practitioner accessibility.
 
-- **Founding convening** (2024-11-01): In late 2024, Joshua Tan convened Metagov research directors to design a journal for documenting living institutions. — *participants: Ellie Rennie, Joshua Tan, Michael Zargham, Seth Frey*
+- **Founding convening** (2024-11-01): In late 2024, Joshua Tan convened a founding group to design a peer-reviewed venue for documenting living institutions. Ilan Ben-Meir and Natalia Dashan helped develop the conceptual framework; Michael Zargham led the design and implementation; Seth Frey and Ellie Rennie contributed cognitive-science and digital-ethnography perspectives. — *participants: Ellie Rennie, Ilan Ben-Meir, Joshua Tan, Michael Zargham, Natalia Dashan, Seth Frey*
 
 ## 8. Evolution
 

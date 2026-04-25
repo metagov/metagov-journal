@@ -61,7 +61,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     mgj:q4Narrative "The foundational rules emerge from three layers. The Catechism (nine questions) structures all submissions, creating comparable documentation. The Review Criteria define evaluation standards — completeness, clarity, evidence, viability, and contribution. The GitHub Flow establishes procedural rules — fork, submit PR, review, revise, merge." ;
     mgj:q5Narrative "Primary activity occurs at github.com/metagov/journal — submissions, reviews, and discussions. The Metagov website offers organizational context. Joshua Tan's introductory blog post articulates the founding vision." ;
     mgj:q6Narrative "As author of this draft and current lead editor, I (Michael Zargham) designed and developed the catechism framework, review processes, and RDF-native infrastructure (the mgj toolchain) that this submission demonstrates. Joshua Tan, Metagov co-founder, is credited with the founding idea — he convened the editorial group and articulated the gap this journal addresses. Liz Barry, as Metagov's Executive Director, is responsible for resource allocation and ongoing supervision of the program. Joshua and I both serve on Metagov's board, creating alignment but also potential conflicts of interest. The founding editorial group's review of this self-submission is necessarily reflexive." ;
-    mgj:q7Narrative "The journal emerged from Joshua Tan's observation that governance experiments in DAOs, cooperatives, and digital communities generate valuable innovations but lack documentation venues. In late 2024, Tan convened Metagov research directors to design a solution. The founding team brought complementary perspectives: Tan (platform governance), Zargham (systems engineering), Frey (cognitive science), Rennie (digital ethnography)." ;
+    mgj:q7Narrative "The journal emerged from Joshua Tan's observation that governance experiments in DAOs, cooperatives, and digital communities generate valuable innovations but lack documentation venues. In late 2024, Tan convened a founding group to design a solution. The team brought complementary perspectives: Tan (platform governance and the founding idea), Ilan Ben-Meir and Natalia Dashan (conceptual framework development), Zargham (systems engineering and tooling), Frey (cognitive science), Rennie (digital ethnography). The catechism framework emerged through iterative design — processing Tan's framing into a concrete, implementable specification — balancing academic rigor with practitioner accessibility." ;
     mgj:q8Narrative "Evolution operates through multiple mechanisms. Immediate adaptation happens via GitHub. Periodic review occurs quarterly as editors assess processes and incorporate lessons. Version control enables framework evolution while maintaining citation stability through semantic versioning. Community feedback shapes development through discussions and reviews. Scaling triggers activate new processes as volume grows." ;
     mgj:q9Narrative "Foundational documents and academic references that ground the journal's design and motivate its operating model." ;
     mgj:submissionDate "2026-04-25"^^xsd:date ;
@@ -192,12 +192,14 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/origin/1>
     a mgj:OriginEvent ;
     mgj:originDate "2024-11-01"^^xsd:date ;
-    mgj:originDescription "In late 2024, Joshua Tan convened Metagov research directors to design a journal for documenting living institutions." ;
+    mgj:originDescription "In late 2024, Joshua Tan convened a founding group to design a peer-reviewed venue for documenting living institutions. Ilan Ben-Meir and Natalia Dashan helped develop the conceptual framework; Michael Zargham led the design and implementation; Seth Frey and Ellie Rennie contributed cognitive-science and digital-ethnography perspectives." ;
     mgj:originLabel "Founding convening" ;
     mgj:originParticipant
         <https://journal.metagov.org/people/ellie-rennie> ,
+        <https://journal.metagov.org/people/ilan-ben-meir> ,
         <https://journal.metagov.org/people/joshua-tan> ,
         <https://journal.metagov.org/people/michael-zargham> ,
+        <https://journal.metagov.org/people/natalia-dashan> ,
         <https://journal.metagov.org/people/seth-frey> ;
 .
 
