@@ -1,12 +1,12 @@
-# Seth Frey
+# Natalia Dashan
 
 <!-- compiler: mgj.compilers.wiki v0.1.0 -->
 
-`https://journal.metagov.org/people/seth-frey`
+`https://journal.metagov.org/people/natalia-dashan`
 
 ## Stakeholder roles
 
-- **Founding Editor** in [The Metagov Journal](Institution-metagov-journal)
+- **Founding Contributor** in [The Metagov Journal](Institution-metagov-journal)
 
 ## Origin events
 

@@ -5,14 +5,29 @@ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
     foaf:name "Ellie Rennie" ;
 .
 
+<https://journal.metagov.org/people/ilan-ben-meir>
+    a foaf:Person ;
+    foaf:name "Ilan Ben-Meir" ;
+.
+
 <https://journal.metagov.org/people/joshua-tan>
     a foaf:Person ;
     foaf:name "Joshua Tan" ;
 .
 
+<https://journal.metagov.org/people/liz-barry>
+    a foaf:Person ;
+    foaf:name "Liz Barry" ;
+.
+
 <https://journal.metagov.org/people/michael-zargham>
     a foaf:Person ;
     foaf:name "Michael Zargham" ;
+.
+
+<https://journal.metagov.org/people/natalia-dashan>
+    a foaf:Person ;
+    foaf:name "Natalia Dashan" ;
 .
 
 <https://journal.metagov.org/people/seth-frey>
