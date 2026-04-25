@@ -1,0 +1,29 @@
+# Q1 — Purpose: per-question SHACL shapes
+#
+# Inner-loop validation. Checks well-formedness of Q1 entities; minimum
+# cardinality on the Submission is enforced by system.ttl.
+
+@prefix mgj:     <https://journal.metagov.org/ns/mgj#> .
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+
+<https://journal.metagov.org/shapes/q1-purpose>
+    a owl:Ontology ;
+    dcterms:title   "Q1 Purpose Shapes" ;
+    owl:imports     <https://journal.metagov.org/ns/mgj> .
+
+
+mgj:Q1NarrativeShape
+    a sh:NodeShape ;
+    sh:targetClass mgj:Submission ;
+    sh:property [
+        sh:path      mgj:q1Narrative ;
+        sh:datatype  xsd:string ;
+        sh:minLength 1 ;
+        sh:maxCount  1 ;
+        sh:message   "Q1 narrative must be a non-empty string." ;
+    ] .

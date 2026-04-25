@@ -1,0 +1,62 @@
+# Q7 — Origins: per-question SHACL shapes
+
+@prefix mgj:     <https://journal.metagov.org/ns/mgj#> .
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+
+<https://journal.metagov.org/shapes/q7-origins>
+    a owl:Ontology ;
+    dcterms:title   "Q7 Origins Shapes" ;
+    owl:imports     <https://journal.metagov.org/ns/mgj> .
+
+
+mgj:Q7NarrativeShape
+    a sh:NodeShape ;
+    sh:targetClass mgj:Submission ;
+    sh:property [
+        sh:path      mgj:q7Narrative ;
+        sh:datatype  xsd:string ;
+        sh:minLength 1 ;
+        sh:maxCount  1 ;
+        sh:message   "Q7 narrative must be a non-empty string." ;
+    ] .
+
+
+mgj:OriginEventShape
+    a sh:NodeShape ;
+    sh:targetClass mgj:OriginEvent ;
+
+    sh:property [
+        sh:path      mgj:originLabel ;
+        sh:datatype  xsd:string ;
+        sh:minCount  1 ;
+        sh:maxCount  1 ;
+        sh:minLength 1 ;
+        sh:message   "Every OriginEvent must have a label." ;
+    ] ;
+
+    sh:property [
+        sh:path      mgj:originDescription ;
+        sh:datatype  xsd:string ;
+        sh:minCount  1 ;
+        sh:maxCount  1 ;
+        sh:minLength 1 ;
+        sh:message   "Every OriginEvent must have a description." ;
+    ] ;
+
+    sh:property [
+        sh:path     mgj:originDate ;
+        sh:datatype xsd:date ;
+        sh:maxCount 1 ;
+        sh:message  "If present, originDate must be a single xsd:date." ;
+    ] ;
+
+    sh:property [
+        sh:path     mgj:originParticipant ;
+        sh:minCount 1 ;
+        sh:message  "Every OriginEvent must reference at least one participant (foaf:Person or foaf:Organization)." ;
+    ] .

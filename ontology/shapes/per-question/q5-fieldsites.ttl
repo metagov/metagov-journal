@@ -1,0 +1,62 @@
+# Q5 — Field sites: per-question SHACL shapes
+
+@prefix mgj:     <https://journal.metagov.org/ns/mgj#> .
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+
+<https://journal.metagov.org/shapes/q5-fieldsites>
+    a owl:Ontology ;
+    dcterms:title   "Q5 Field Sites Shapes" ;
+    owl:imports     <https://journal.metagov.org/ns/mgj> .
+
+
+mgj:Q5NarrativeShape
+    a sh:NodeShape ;
+    sh:targetClass mgj:Submission ;
+    sh:property [
+        sh:path      mgj:q5Narrative ;
+        sh:datatype  xsd:string ;
+        sh:minLength 1 ;
+        sh:maxCount  1 ;
+        sh:message   "Q5 narrative must be a non-empty string." ;
+    ] .
+
+
+mgj:FieldSiteShape
+    a sh:NodeShape ;
+    sh:targetClass mgj:FieldSite ;
+
+    sh:property [
+        sh:path      mgj:fieldSiteLabel ;
+        sh:datatype  xsd:string ;
+        sh:minCount  1 ;
+        sh:maxCount  1 ;
+        sh:minLength 1 ;
+        sh:message   "Every FieldSite must have a label." ;
+    ] ;
+
+    sh:property [
+        sh:path     mgj:fieldSiteURL ;
+        sh:datatype xsd:anyURI ;
+        sh:maxCount 1 ;
+        sh:message  "If present, fieldSiteURL must be a single URI." ;
+    ] ;
+
+    sh:property [
+        sh:path      mgj:fieldSiteDescription ;
+        sh:datatype  xsd:string ;
+        sh:maxCount  1 ;
+        sh:message   "If present, fieldSiteDescription must be a single literal." ;
+    ] ;
+
+    # Require at least one of URL or description so the site is identifiable.
+    sh:or (
+        [ sh:path mgj:fieldSiteURL ;         sh:minCount 1 ]
+        [ sh:path mgj:fieldSiteDescription ; sh:minCount 1 ]
+    ) ;
+
+    sh:message "Every FieldSite must have at least one of fieldSiteURL or fieldSiteDescription." .

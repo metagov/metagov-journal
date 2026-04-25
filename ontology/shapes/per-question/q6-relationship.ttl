@@ -1,0 +1,47 @@
+# Q6 — Author relationship: per-question SHACL shapes
+
+@prefix mgj:     <https://journal.metagov.org/ns/mgj#> .
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+
+
+<https://journal.metagov.org/shapes/q6-relationship>
+    a owl:Ontology ;
+    dcterms:title   "Q6 Author Relationship Shapes" ;
+    owl:imports     <https://journal.metagov.org/ns/mgj> .
+
+
+mgj:Q6NarrativeShape
+    a sh:NodeShape ;
+    sh:targetClass mgj:Submission ;
+    sh:property [
+        sh:path      mgj:q6Narrative ;
+        sh:datatype  xsd:string ;
+        sh:minLength 1 ;
+        sh:maxCount  1 ;
+        sh:message   "Q6 narrative must be a non-empty string." ;
+    ] ;
+    sh:property [
+        sh:path      mgj:authorRole ;
+        sh:datatype  xsd:string ;
+        sh:maxCount  1 ;
+        sh:minLength 1 ;
+        sh:message   "If present, authorRole must be a non-empty single literal." ;
+    ] ;
+    sh:property [
+        sh:path      mgj:authorDisclosure ;
+        sh:datatype  xsd:string ;
+        sh:maxCount  1 ;
+        sh:minLength 1 ;
+        sh:message   "If present, authorDisclosure must be a non-empty single literal." ;
+    ] ;
+    sh:property [
+        sh:path     mgj:authoredBy ;
+        sh:maxCount 1 ;
+        sh:class    foaf:Person ;
+        sh:message  "If present, authoredBy must reference a single foaf:Person." ;
+    ] .

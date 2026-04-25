@@ -1,0 +1,60 @@
+# Q2 — Stakeholders: per-question SHACL shapes
+#
+# Inner-loop validation: every Stakeholder must be well-formed (has an agent
+# and a role label). Cardinality (>=1 stakeholder per submission) and the
+# no-UnresolvedAgent rule live in system.ttl.
+
+@prefix mgj:     <https://journal.metagov.org/ns/mgj#> .
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+
+
+<https://journal.metagov.org/shapes/q2-stakeholders>
+    a owl:Ontology ;
+    dcterms:title   "Q2 Stakeholders Shapes" ;
+    owl:imports     <https://journal.metagov.org/ns/mgj> .
+
+
+mgj:Q2NarrativeShape
+    a sh:NodeShape ;
+    sh:targetClass mgj:Submission ;
+    sh:property [
+        sh:path      mgj:q2Narrative ;
+        sh:datatype  xsd:string ;
+        sh:minLength 1 ;
+        sh:maxCount  1 ;
+        sh:message   "Q2 narrative must be a non-empty string." ;
+    ] .
+
+
+mgj:StakeholderShape
+    a sh:NodeShape ;
+    sh:targetClass mgj:Stakeholder ;
+
+    sh:property [
+        sh:path     mgj:stakeholderAgent ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message  "Every Stakeholder must reference exactly one agent (foaf:Person, foaf:Organization, or mgj:UnresolvedAgent during pre-affirmation)." ;
+    ] ;
+
+    sh:property [
+        sh:path      mgj:roleLabel ;
+        sh:datatype  xsd:string ;
+        sh:minCount  1 ;
+        sh:maxCount  1 ;
+        sh:minLength 1 ;
+        sh:message   "Every Stakeholder must carry a role label." ;
+    ] ;
+
+    sh:property [
+        sh:path     mgj:hasRole ;
+        sh:maxCount 1 ;
+        sh:class    skos:Concept ;
+        sh:message  "If present, hasRole must point to a single skos:Concept (in mgj:RoleType scheme)." ;
+    ] .

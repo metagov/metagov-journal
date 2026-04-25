@@ -1,0 +1,732 @@
+# =============================================================================
+# Metagov Journal Ontology
+# Namespace: mgj
+# Version: 0.1.0
+#
+# Schema for the institutional catechism (Q1-Q9). Companion SHACL graphs
+# enforce minimum-documentation requirements.
+#
+# Design decisions:
+#   D1 — Submission and Institution are distinct entities. The institution
+#         persists; the submission is a versioned documentation artifact
+#         about it. Multiple submissions per institution are permitted.
+#   D2 — Per-question typed entities (Stakeholder, FieldSite, etc.) are
+#         first-class so the wiki can cross-link them. Each question also
+#         carries a narrative literal preserving the author's prose.
+#   D3 — foaf:Person and foaf:Organization are reused for agents.
+#         dcterms is reused for bibliographic metadata on References and
+#         on the Submission itself.
+#   D4 — Lessig modalities (Law/Norms/Markets/Architecture) and
+#         ConstitutionalElementType are SKOS controlled vocabularies.
+#         RoleType is an open SKOS scheme.
+#   D5 — Cardinality constraints are NOT expressed in OWL. They live in
+#         the companion SHACL graphs (per-question/q*.ttl, system.ttl).
+#   D6 — Authoring provenance is tracked on every triple via
+#         mgj:authorAffirmed (xsd:dateTime) for CLI-mediated edits and
+#         mgj:extractedBy (-> mgj:Extraction, prov:Activity) for parser
+#         output. Affirmed triples are sticky against re-extraction.
+#   D7 — UnresolvedAgent is a parser-output safety class for stakeholders
+#         too vague to map to foaf:Person/foaf:Organization. The author
+#         resolves these via CLI before affirmation.
+# =============================================================================
+
+@prefix mgj:     <https://journal.metagov.org/ns/mgj#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+
+
+# =============================================================================
+# Ontology Declaration
+# =============================================================================
+
+<https://journal.metagov.org/ns/mgj>
+    a owl:Ontology ;
+    dcterms:title       "Metagov Journal Ontology" ;
+    dcterms:description "Schema for institutional catechism submissions to the Metagov Journal. Encodes the nine catechism questions as typed RDF entities suitable for SHACL validation, deterministic compilation, and cross-submission wiki generation." ;
+    owl:versionInfo     "0.1.0" .
+
+
+# =============================================================================
+# Core Catechism Classes
+# =============================================================================
+
+mgj:Institution
+    a owl:Class ;
+    rdfs:label   "Institution" ;
+    rdfs:comment "The persistent living institution being documented. Spans multiple submissions over time as the institution evolves. Identified by a stable IRI." .
+
+mgj:Submission
+    a owl:Class ;
+    rdfs:label   "Journal Submission" ;
+    rdfs:comment "A timestamped catechism response documenting one institution at one point in time. Carries DCTerms metadata, links to one mgj:Institution, and enumerates per-question narratives plus typed entity links." .
+
+mgj:Stakeholder
+    a owl:Class ;
+    rdfs:label   "Stakeholder" ;
+    rdfs:comment "An n-ary connector binding a foaf:Agent (Person or Organization), a Role, and the Institution. A given Person may appear as multiple Stakeholders across submissions, one per role. Maps to Q2." .
+
+mgj:FieldSite
+    a owl:Class ;
+    rdfs:label   "Field Site" ;
+    rdfs:comment "A specific instance where the institutional pattern can be observed — a deployment location, URL, or community venue. Maps to Q5." .
+
+mgj:EnvironmentalFactor
+    a owl:Class ;
+    rdfs:label   "Environmental Factor" ;
+    rdfs:comment "An external force (per Lessig: Law, Norms, Markets, or Architecture) that constrains or enables institutional patterns. Each instance is typed via mgj:lessigModality. Maps to Q3." .
+
+mgj:ConstitutionalElement
+    a owl:Class ;
+    rdfs:label   "Constitutional Element" ;
+    rdfs:comment "A formal or informal rule, norm, or procedure that generates institutional stability. Typed by mgj:elementType. Maps to Q4." .
+
+mgj:OriginEvent
+    a owl:Class ;
+    rdfs:subClassOf prov:Activity ;
+    rdfs:label   "Origin Event" ;
+    rdfs:comment "A founding event in the institution's history — convening, charter ratification, deployment, etc. Carries participants and a date. Maps to Q7." .
+
+mgj:EvolutionMechanism
+    a owl:Class ;
+    rdfs:label   "Evolution Mechanism" ;
+    rdfs:comment "A procedure or pattern by which the institution changes over time — formal amendment process, informal adaptation, response to external pressure. Maps to Q8." .
+
+mgj:Reference
+    a owl:Class ;
+    rdfs:label   "Reference" ;
+    rdfs:comment "A cited source supporting the documentation. Thin wrapper over DCTerms metadata (title, creator, date, identifier). Maps to Q9." .
+
+mgj:UnresolvedAgent
+    a owl:Class ;
+    rdfs:label   "Unresolved Agent" ;
+    rdfs:comment "Parser-output placeholder for an agent reference that could not be resolved to a foaf:Person or foaf:Organization (e.g. 'the community', 'research directors'). The author must resolve UnresolvedAgent instances via CLI commands before the relevant question can be affirmed. SHACL system shapes reject UnresolvedAgent in any affirmed graph." .
+
+mgj:LegalContext
+    a owl:Class ;
+    rdfs:label   "Legal Context" ;
+    rdfs:comment "Structural relationship between the documented institution and a host organization that provides legal, fiscal, or organizational standing — e.g. fiscal sponsor, legal parent, own incorporation. Distinct from Lessig's Law modality (which captures regulatory forces): a LegalContext is a named relation between two legal entities, not an environmental force. Bridges Q3 (environment), Q4 (constitution), and Q7 (origins). Optional — not every institution has a host. At most one per submission." .
+
+
+# =============================================================================
+# Provenance Classes (PROV-O extension)
+# =============================================================================
+
+mgj:Extraction
+    a owl:Class ;
+    rdfs:subClassOf prov:Activity ;
+    rdfs:label   "Extraction" ;
+    rdfs:comment "A parser invocation that produced one or more extracted triples. Records the model identifier, prompt hash, input.md SHA, and timestamp, enabling cache lookup and provenance audit." .
+
+
+# =============================================================================
+# SKOS Controlled Vocabularies
+# =============================================================================
+
+# --- Lessig modalities (closed scheme) ---
+
+mgj:LessigModalities
+    a skos:ConceptScheme ;
+    skos:prefLabel "Lessig Modalities" ;
+    rdfs:comment   "The four modalities of regulation per Lawrence Lessig (1998, 'The New Chicago School'): Law, Norms, Markets, Architecture. Used to type EnvironmentalFactors in Q3." .
+
+mgj:Law
+    a skos:Concept ;
+    skos:inScheme  mgj:LessigModalities ;
+    skos:prefLabel "Law" ;
+    skos:definition "Formal rules and regulations enforced by state authority." .
+
+mgj:Norms
+    a skos:Concept ;
+    skos:inScheme  mgj:LessigModalities ;
+    skos:prefLabel "Norms" ;
+    skos:definition "Social expectations, customs, and informal sanctions enforced by community." .
+
+mgj:Markets
+    a skos:Concept ;
+    skos:inScheme  mgj:LessigModalities ;
+    skos:prefLabel "Markets" ;
+    skos:definition "Economic forces, price signals, and incentive structures." .
+
+mgj:Architecture
+    a skos:Concept ;
+    skos:inScheme  mgj:LessigModalities ;
+    skos:prefLabel "Architecture" ;
+    skos:definition "Technical and physical infrastructure that constrains or enables behavior by design." .
+
+# --- Constitutional element types (closed scheme) ---
+
+mgj:ConstitutionalElementType
+    a skos:ConceptScheme ;
+    skos:prefLabel "Constitutional Element Type" ;
+    rdfs:comment   "Categories of constitutional elements distinguishing formal from informal mechanisms. Used to type ConstitutionalElements in Q4." .
+
+mgj:Bylaw
+    a skos:Concept ;
+    skos:inScheme  mgj:ConstitutionalElementType ;
+    skos:prefLabel "Bylaw" ;
+    skos:definition "A formally written rule (charter, bylaw, terms of service, smart contract clause)." .
+
+mgj:Norm
+    a skos:Concept ;
+    skos:inScheme  mgj:ConstitutionalElementType ;
+    skos:prefLabel "Norm" ;
+    skos:definition "An unwritten convention or expectation maintained by community practice." .
+
+mgj:DecisionProcedure
+    a skos:Concept ;
+    skos:inScheme  mgj:ConstitutionalElementType ;
+    skos:prefLabel "Decision Procedure" ;
+    skos:definition "A defined process by which the institution makes binding choices (voting, consensus, executive order)." .
+
+mgj:DisputeResolution
+    a skos:Concept ;
+    skos:inScheme  mgj:ConstitutionalElementType ;
+    skos:prefLabel "Dispute Resolution" ;
+    skos:definition "A defined process for resolving conflicts between participants." .
+
+mgj:AmendmentProcess
+    a skos:Concept ;
+    skos:inScheme  mgj:ConstitutionalElementType ;
+    skos:prefLabel "Amendment Process" ;
+    skos:definition "A defined process by which the institution's own rules can be modified." .
+
+# --- Role types (open scheme — extended per submission) ---
+
+mgj:RoleType
+    a skos:ConceptScheme ;
+    skos:prefLabel "Role Type" ;
+    rdfs:comment   "Open vocabulary of stakeholder roles. New role concepts are minted per submission and added to this scheme by CLI mediation; the SHACL system shape requires every Stakeholder's role to be in this scheme." .
+
+# --- Legal relationship types (closed scheme) ---
+
+mgj:LegalRelationshipType
+    a skos:ConceptScheme ;
+    skos:prefLabel "Legal Relationship Type" ;
+    rdfs:comment   "Closed vocabulary categorizing the structural relationship between an institution and its host organization. Used to type mgj:LegalContext." .
+
+mgj:FiscalSponsor
+    a skos:Concept ;
+    skos:inScheme  mgj:LegalRelationshipType ;
+    skos:prefLabel "Fiscal Sponsor" ;
+    skos:definition "Host organization receives charitable funds on the institution's behalf and disburses them per the host's policy. The institution is not itself a legal entity." .
+
+mgj:LegalIncorporation
+    a skos:Concept ;
+    skos:inScheme  mgj:LegalRelationshipType ;
+    skos:prefLabel "Legal Incorporation" ;
+    skos:definition "The institution is itself an incorporated legal entity (e.g. 501(c)(3) nonprofit, LLC, foundation, cooperative). The host organization slot identifies the registering entity (typically the institution itself)." .
+
+mgj:ParentOrganization
+    a skos:Concept ;
+    skos:inScheme  mgj:LegalRelationshipType ;
+    skos:prefLabel "Parent Organization" ;
+    skos:definition "The institution operates as a sub-unit, program, or division of a larger parent organization, sharing legal personhood with the parent." .
+
+mgj:Incubator
+    a skos:Concept ;
+    skos:inScheme  mgj:LegalRelationshipType ;
+    skos:prefLabel "Incubator" ;
+    skos:definition "Temporary host providing infrastructure, funding, or administrative support during early-stage development. Spinout to independent legal status is anticipated." .
+
+mgj:Network
+    a skos:Concept ;
+    skos:inScheme  mgj:LegalRelationshipType ;
+    skos:prefLabel "Network" ;
+    skos:definition "Member of a federation, alliance, or network of peer institutions without subordinate legal status. The host organization slot identifies the network." .
+
+
+# =============================================================================
+# Data Properties — Submission metadata
+# =============================================================================
+
+mgj:submissionDate
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:Submission ;
+    rdfs:range   xsd:date ;
+    rdfs:label   "submission date" ;
+    rdfs:comment "ISO 8601 date on which this submission was authored." .
+
+mgj:submissionVersion
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:Submission ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "submission version" ;
+    rdfs:comment "Semantic version string for this submission (e.g. '1.0.0'). Increments on substantive revision." .
+
+
+# =============================================================================
+# Data Properties — Per-question narratives
+#
+# Each Qi has a corresponding narrative property carrying the author's prose.
+# The compiler renders narratives verbatim alongside the typed entity views.
+# =============================================================================
+
+mgj:q1Narrative
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:Submission ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "Q1 narrative (purpose)" ;
+    rdfs:comment "Author's prose answering Q1: what is the institution's purpose?" .
+
+mgj:q2Narrative
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:Submission ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "Q2 narrative (stakeholders)" ;
+    rdfs:comment "Author's prose answering Q2: who are the stakeholders and what are their roles?" .
+
+mgj:q3Narrative
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:Submission ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "Q3 narrative (environment)" ;
+    rdfs:comment "Author's prose answering Q3: what environmental factors shape the institution?" .
+
+mgj:q4Narrative
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:Submission ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "Q4 narrative (constitution)" ;
+    rdfs:comment "Author's prose answering Q4: what constitutes the institution's constitution?" .
+
+mgj:q5Narrative
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:Submission ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "Q5 narrative (field sites)" ;
+    rdfs:comment "Author's prose answering Q5: where are the field sites?" .
+
+mgj:q6Narrative
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:Submission ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "Q6 narrative (author relationship)" ;
+    rdfs:comment "Author's prose answering Q6: what is your relationship to the institution?" .
+
+mgj:q7Narrative
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:Submission ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "Q7 narrative (origins)" ;
+    rdfs:comment "Author's prose answering Q7: how and when did the institution emerge?" .
+
+mgj:q8Narrative
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:Submission ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "Q8 narrative (evolution)" ;
+    rdfs:comment "Author's prose answering Q8: how does the institution evolve?" .
+
+mgj:q9Narrative
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:Submission ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "Q9 narrative (references)" ;
+    rdfs:comment "Author's prose answering Q9: what references support this documentation?" .
+
+
+# =============================================================================
+# Data Properties — Institution
+# =============================================================================
+
+mgj:institutionName
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:Institution ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "institution name" ;
+    rdfs:comment "Canonical human-readable name of the institution." .
+
+mgj:institutionDescription
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:Institution ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "institution description" ;
+    rdfs:comment "Short description of the institution suitable for index pages and wiki summaries." .
+
+
+# =============================================================================
+# Data Properties — Stakeholder
+# =============================================================================
+
+mgj:roleLabel
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:Stakeholder ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "role label" ;
+    rdfs:comment "Human-readable label for the stakeholder's role within the institution. Should match the prefLabel of a skos:Concept in mgj:RoleType." .
+
+mgj:stakeholderResponsibilities
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:Stakeholder ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "responsibilities" ;
+    rdfs:comment "Description of what this stakeholder is responsible for within the institution." .
+
+
+# =============================================================================
+# Data Properties — FieldSite
+# =============================================================================
+
+mgj:fieldSiteLabel
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:FieldSite ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "field site label" ;
+    rdfs:comment "Human-readable name of the field site." .
+
+mgj:fieldSiteURL
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:FieldSite ;
+    rdfs:range   xsd:anyURI ;
+    rdfs:label   "field site URL" ;
+    rdfs:comment "Dereferenceable URL where the field site can be observed (forum, repository, address)." .
+
+mgj:fieldSiteDescription
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:FieldSite ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "field site description" ;
+    rdfs:comment "Description of what activity or attention is allocated at this site." .
+
+
+# =============================================================================
+# Data Properties — EnvironmentalFactor
+# =============================================================================
+
+mgj:factorDescription
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:EnvironmentalFactor ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "factor description" ;
+    rdfs:comment "Description of the environmental force and how it shapes the institution." .
+
+
+# =============================================================================
+# Data Properties — ConstitutionalElement
+# =============================================================================
+
+mgj:elementLabel
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:ConstitutionalElement ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "element label" ;
+    rdfs:comment "Short name for the constitutional element." .
+
+mgj:elementDescription
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:ConstitutionalElement ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "element description" ;
+    rdfs:comment "Description of the rule, norm, or procedure and how it operates." .
+
+mgj:elementSourceURL
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:ConstitutionalElement ;
+    rdfs:range   xsd:anyURI ;
+    rdfs:label   "element source URL" ;
+    rdfs:comment "Optional URL of the canonical written source for this element (charter document, repository file)." .
+
+
+# =============================================================================
+# Data Properties — OriginEvent
+# =============================================================================
+
+mgj:originLabel
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:OriginEvent ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "origin event label" ;
+    rdfs:comment "Short name for the founding event." .
+
+mgj:originDescription
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:OriginEvent ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "origin event description" ;
+    rdfs:comment "Description of what happened, who was involved, and what motivated the event." .
+
+mgj:originDate
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:OriginEvent ;
+    rdfs:range   xsd:date ;
+    rdfs:label   "origin date" ;
+    rdfs:comment "Date or approximate date the origin event occurred." .
+
+
+# =============================================================================
+# Data Properties — EvolutionMechanism
+# =============================================================================
+
+mgj:mechanismLabel
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:EvolutionMechanism ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "mechanism label" ;
+    rdfs:comment "Short name for the evolution mechanism." .
+
+mgj:mechanismDescription
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:EvolutionMechanism ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "mechanism description" ;
+    rdfs:comment "Description of how this mechanism produces institutional change." .
+
+
+# =============================================================================
+# Data Properties — Reference (uses dcterms primarily)
+# =============================================================================
+
+# References use dcterms:title, dcterms:creator, dcterms:date, dcterms:identifier
+# (DOI, URL, etc.) as their bibliographic metadata. No mgj-specific data
+# properties are introduced for this class.
+
+
+# =============================================================================
+# Data Properties — LegalContext
+# =============================================================================
+
+mgj:legalContextDescription
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:LegalContext ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "legal context description" ;
+    rdfs:comment "Narrative describing the host relationship — e.g. 'operates under Metagov's 501(c)(3) status; subject to Metagov's grant disbursement and IP policies'." .
+
+mgj:fundingReference
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:LegalContext ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "funding reference" ;
+    rdfs:comment "Optional grant number, contract ID, EIN, or other identifier associated with the legal context." .
+
+
+# =============================================================================
+# Data Properties — Author disclosure (Q6)
+# =============================================================================
+
+mgj:authorRole
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:Submission ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "author role" ;
+    rdfs:comment "The author's role(s) within the institution being documented. Q6 disclosure." .
+
+mgj:authorDisclosure
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:Submission ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "author disclosure" ;
+    rdfs:comment "Author's statement of biases, blind spots, conflicts of interest, and motivations for documenting this institution. Q6 disclosure." .
+
+
+# =============================================================================
+# Data Properties — UnresolvedAgent
+# =============================================================================
+
+mgj:unresolvedLabel
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:UnresolvedAgent ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "unresolved label" ;
+    rdfs:comment "The literal phrase the parser encountered (e.g. 'the community', 'research directors') that could not be resolved to a typed agent." .
+
+
+# =============================================================================
+# Data Properties — Provenance
+# =============================================================================
+
+mgj:authorAffirmed
+    a owl:DatatypeProperty ;
+    rdfs:range   xsd:dateTime ;
+    rdfs:label   "author affirmed" ;
+    rdfs:comment "Timestamp at which the author affirmed the subject triple via a CLI command. Affirmed triples are sticky against re-extraction: the parser cannot silently overwrite them." .
+
+mgj:extractionModel
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:Extraction ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "extraction model" ;
+    rdfs:comment "Identifier of the language model used for extraction (e.g. 'claude-sonnet-4-6')." .
+
+mgj:promptHash
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:Extraction ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "prompt hash" ;
+    rdfs:comment "SHA-256 of the prompt template used for this extraction. Pinned via the prompts/ directory." .
+
+mgj:inputHash
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:Extraction ;
+    rdfs:range   xsd:string ;
+    rdfs:label   "input hash" ;
+    rdfs:comment "SHA-256 of the input.md slice (per-question section) that was extracted from." .
+
+mgj:extractedAt
+    a owl:DatatypeProperty ;
+    rdfs:domain  mgj:Extraction ;
+    rdfs:range   xsd:dateTime ;
+    rdfs:label   "extracted at" ;
+    rdfs:comment "Timestamp of extraction." .
+
+
+# =============================================================================
+# Object Properties — Submission top-level
+# =============================================================================
+
+mgj:documents
+    a owl:ObjectProperty ;
+    owl:inverseOf mgj:documentedBy ;
+    rdfs:domain  mgj:Submission ;
+    rdfs:range   mgj:Institution ;
+    rdfs:label   "documents" ;
+    rdfs:comment "Links a Submission to the Institution it documents." .
+
+mgj:documentedBy
+    a owl:ObjectProperty ;
+    owl:inverseOf mgj:documents ;
+    rdfs:domain  mgj:Institution ;
+    rdfs:range   mgj:Submission ;
+    rdfs:label   "documented by" ;
+    rdfs:comment "Inverse: links an Institution to all submissions documenting it." .
+
+mgj:authoredBy
+    a owl:ObjectProperty ;
+    rdfs:domain  mgj:Submission ;
+    rdfs:range   foaf:Person ;
+    rdfs:label   "authored by" ;
+    rdfs:comment "Links a Submission to its primary author. Q6 disclosure." .
+
+mgj:operatesUnder
+    a owl:ObjectProperty ;
+    rdfs:domain  mgj:Submission ;
+    rdfs:range   mgj:LegalContext ;
+    rdfs:label   "operates under" ;
+    rdfs:comment "Links a Submission to a single LegalContext describing the institution's host relationship. Optional — institutions without a sponsor or parent omit this. At most one LegalContext per submission." .
+
+mgj:hostOrganization
+    a owl:ObjectProperty ;
+    rdfs:domain  mgj:LegalContext ;
+    rdfs:range   foaf:Organization ;
+    rdfs:label   "host organization" ;
+    rdfs:comment "The organization providing legal, fiscal, or organizational standing — fiscal sponsor, parent, network, or (for LegalIncorporation) the institution's own registering entity. Must resolve to an entry in shared/organizations.ttl." .
+
+mgj:legalRelationship
+    a owl:ObjectProperty ;
+    rdfs:domain  mgj:LegalContext ;
+    rdfs:range   skos:Concept ;
+    rdfs:label   "legal relationship" ;
+    rdfs:comment "Links a LegalContext to a concept in mgj:LegalRelationshipType (FiscalSponsor, LegalIncorporation, ParentOrganization, Incubator, Network)." .
+
+
+# =============================================================================
+# Object Properties — Per-question typed-entity links
+# =============================================================================
+
+# Q2 — Stakeholders
+mgj:hasStakeholder
+    a owl:ObjectProperty ;
+    rdfs:domain  mgj:Submission ;
+    rdfs:range   mgj:Stakeholder ;
+    rdfs:label   "has stakeholder" ;
+    rdfs:comment "Links a Submission to its Stakeholder records. Q2." .
+
+mgj:stakeholderAgent
+    a owl:ObjectProperty ;
+    rdfs:domain  mgj:Stakeholder ;
+    rdfs:range   foaf:Agent ;
+    rdfs:label   "stakeholder agent" ;
+    rdfs:comment "Links a Stakeholder n-ary node to the foaf:Agent (Person or Organization) playing the role. May also point to mgj:UnresolvedAgent during pre-affirmation states." .
+
+mgj:hasRole
+    a owl:ObjectProperty ;
+    rdfs:domain  mgj:Stakeholder ;
+    rdfs:range   skos:Concept ;
+    rdfs:label   "has role" ;
+    rdfs:comment "Links a Stakeholder to a Role concept in the mgj:RoleType scheme." .
+
+# Q3 — Environmental factors
+mgj:hasEnvironmentalFactor
+    a owl:ObjectProperty ;
+    rdfs:domain  mgj:Submission ;
+    rdfs:range   mgj:EnvironmentalFactor ;
+    rdfs:label   "has environmental factor" ;
+    rdfs:comment "Links a Submission to its EnvironmentalFactor records. Q3." .
+
+mgj:lessigModality
+    a owl:ObjectProperty ;
+    rdfs:domain  mgj:EnvironmentalFactor ;
+    rdfs:range   skos:Concept ;
+    rdfs:label   "Lessig modality" ;
+    rdfs:comment "Links an EnvironmentalFactor to a concept in the mgj:LessigModalities scheme (Law, Norms, Markets, or Architecture)." .
+
+# Q4 — Constitutional elements
+mgj:hasConstitutionalElement
+    a owl:ObjectProperty ;
+    rdfs:domain  mgj:Submission ;
+    rdfs:range   mgj:ConstitutionalElement ;
+    rdfs:label   "has constitutional element" ;
+    rdfs:comment "Links a Submission to its ConstitutionalElement records. Q4." .
+
+mgj:elementType
+    a owl:ObjectProperty ;
+    rdfs:domain  mgj:ConstitutionalElement ;
+    rdfs:range   skos:Concept ;
+    rdfs:label   "element type" ;
+    rdfs:comment "Links a ConstitutionalElement to a concept in the mgj:ConstitutionalElementType scheme." .
+
+# Q5 — Field sites
+mgj:hasFieldSite
+    a owl:ObjectProperty ;
+    rdfs:domain  mgj:Submission ;
+    rdfs:range   mgj:FieldSite ;
+    rdfs:label   "has field site" ;
+    rdfs:comment "Links a Submission to its FieldSite records. Q5." .
+
+# Q7 — Origin events
+mgj:hasOriginEvent
+    a owl:ObjectProperty ;
+    rdfs:domain  mgj:Submission ;
+    rdfs:range   mgj:OriginEvent ;
+    rdfs:label   "has origin event" ;
+    rdfs:comment "Links a Submission to its OriginEvent records. Q7." .
+
+mgj:originParticipant
+    a owl:ObjectProperty ;
+    rdfs:domain  mgj:OriginEvent ;
+    rdfs:range   foaf:Agent ;
+    rdfs:label   "origin participant" ;
+    rdfs:comment "Links an OriginEvent to a participating agent (Person or Organization)." .
+
+# Q8 — Evolution mechanisms
+mgj:hasEvolutionMechanism
+    a owl:ObjectProperty ;
+    rdfs:domain  mgj:Submission ;
+    rdfs:range   mgj:EvolutionMechanism ;
+    rdfs:label   "has evolution mechanism" ;
+    rdfs:comment "Links a Submission to its EvolutionMechanism records. Q8." .
+
+# Q9 — References
+mgj:hasReference
+    a owl:ObjectProperty ;
+    rdfs:domain  mgj:Submission ;
+    rdfs:range   mgj:Reference ;
+    rdfs:label   "has reference" ;
+    rdfs:comment "Links a Submission to its Reference records. Q9." .
+
+
+# =============================================================================
+# Object Properties — Provenance
+# =============================================================================
+
+mgj:extractedBy
+    a owl:ObjectProperty ;
+    rdfs:range   mgj:Extraction ;
+    rdfs:label   "extracted by" ;
+    rdfs:comment "Links a parser-emitted entity to the Extraction activity that produced it." .
