@@ -51,16 +51,19 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/reference/7> ;
     mgj:hasStakeholder
         <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/stakeholder/1> ,
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/stakeholder/10> ,
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/stakeholder/11> ,
         <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/stakeholder/2> ,
         <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/stakeholder/3> ,
         <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/stakeholder/4> ,
         <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/stakeholder/5> ,
         <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/stakeholder/6> ,
         <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/stakeholder/7> ,
-        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/stakeholder/8> ;
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/stakeholder/8> ,
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/stakeholder/9> ;
     mgj:operatesUnder <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/legal/1> ;
     mgj:q1Narrative "The Metagov Journal produces and maintains a peer-reviewed commons of institutional knowledge. Its stable pattern involves practitioners documenting living institutions through structured catechisms, peers reviewing these documentations for completeness and clarity, and the community accumulating reusable organizational patterns. Success manifests as a growing repository of institutional specifications that practitioners reference when designing new organizations or evolving existing ones. The institution functions properly when submissions flow regularly, reviews maintain quality standards, and documented patterns get reused across contexts." ;
-    mgj:q2Narrative "The journal recognizes five distinct modes of engagement. Readers access documented patterns for learning and adaptation. Authors document institutions they participate in by answering the catechism. Reviewers peer-review open submissions on substance. Editors coordinate review and make publication decisions. Infrastructure Contributors evolve the schema, tooling, and AI facilitation that processes every submission — an open role flowing through GitHub-native issue and PR workflows under code-owner review. Joshua Tan, Metagov co-founder, is credited with the founding idea — convening the editorial group and articulating the gap a peer-reviewed venue for living-institution documentation could fill. Ilan Ben-Meir and Natalia Dashan, founding contributors, helped develop the conceptual framework — processing Tan's brainstorming into a concrete design Michael Zargham could implement. Zargham serves as lead editor and is credited with the design and development of the catechism framework, review processes, and RDF-native infrastructure. Seth Frey and Ellie Rennie complete the founding editor group with cognitive-science and digital-ethnography perspectives respectively. Liz Barry, Executive Director of Metagov, is responsible for resource allocation and ongoing supervision — assigning staff time, overseeing operations, and ensuring accountability for outcomes; the journal program exists as a result of her organizational support. Metagov itself provides the nonprofit home and mission alignment." ;
+    mgj:q2Narrative "The journal recognizes five distinct modes of engagement. Readers access documented patterns for learning and adaptation. Authors document institutions they participate in by answering the catechism. Reviewers peer-review open submissions on substance. Editors coordinate review and make publication decisions. Infrastructure Contributors evolve the schema, tooling, and AI facilitation that processes every submission — an open role flowing through GitHub-native issue and PR workflows under code-owner review. Joshua Tan, Metagov co-founder, is credited with the founding idea — convening the editorial group and articulating the gap a peer-reviewed venue for living-institution documentation could fill. Ilan Ben-Meir and Natalia Dashan, founding contributors, helped develop the conceptual framework — processing Tan's brainstorming into a concrete design Michael Zargham could implement. Zargham serves as lead editor and is credited with the design and development of the catechism framework, review processes, and RDF-native infrastructure. Seth Frey and Ellie Rennie complete the founding editor group with cognitive-science and digital-ethnography perspectives respectively. Liz Barry, Executive Director of Metagov, is responsible for resource allocation and ongoing supervision — assigning staff time, overseeing operations, and ensuring accountability for outcomes. Metagov itself provides the nonprofit home and mission alignment, with three group-level stakeholders within its broader network: Metagov Research Directors form the expertise kernel and are the natural pool from which editors and reviewers are drawn; Metagov Staff provide administrative support, solicit submissions and reviewers, promote publications, secure funding, and document impact; and the Metagov Community — Metagov's broader network of practitioners and researchers engaged with digital self-governance — is the natural source of authors, reviewers, and readers." ;
     mgj:q3Narrative "The journal operates within overlapping contexts. Technically, it depends on GitHub for version control and collaboration, technical platforms for archival storage and DOIs. Academically, it bridges scholarly publishing conventions with open-source software practices. Legally, it operates under Metagov's nonprofit structure. Normatively, it inherits from both peer review traditions and GitHub collaboration patterns. Economically, it functions as a scholarly club good where contribution enables access to curated knowledge." ;
     mgj:q4Narrative "The foundational rules emerge from three layers. The Catechism (nine questions) structures all submissions, creating comparable documentation. The Review Criteria define evaluation standards — completeness, clarity, evidence, viability, and contribution. The GitHub Flow establishes procedural rules — fork, submit PR, review, revise, merge." ;
     mgj:q5Narrative "The institution operates across connected venues. Primary activity occurs at github.com/metagov/metagov-journal — submissions, reviews, and discussions. The auto-generated wiki is the navigable reader's view, with cross-linked Institution, Person, and Organization pages plus engagement docs. Stable archival citations are planned via Zenodo for DOI assignment. The Metagov website offers organizational context. Joshua Tan's introductory blog post articulates the founding vision." ;
@@ -83,6 +86,18 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     skos:prefLabel "Lead Editor" ;
 .
 
+<https://journal.metagov.org/roles/metagov-community>
+    a skos:Concept ;
+    skos:inScheme mgj:RoleType ;
+    skos:prefLabel "Community" ;
+.
+
+<https://journal.metagov.org/roles/metagov-staff>
+    a skos:Concept ;
+    skos:inScheme mgj:RoleType ;
+    skos:prefLabel "Staff" ;
+.
+
 <https://journal.metagov.org/roles/organizational-home>
     a skos:Concept ;
     skos:inScheme mgj:RoleType ;
@@ -93,6 +108,12 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     a skos:Concept ;
     skos:inScheme mgj:RoleType ;
     skos:prefLabel "Organizational Sponsor" ;
+.
+
+<https://journal.metagov.org/roles/research-directors>
+    a skos:Concept ;
+    skos:inScheme mgj:RoleType ;
+    skos:prefLabel "Research Directors" ;
 .
 
 <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/constitution/1>
@@ -285,6 +306,22 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     mgj:stakeholderResponsibilities "Lead editor — credit for design and development of the catechism framework, review processes, and RDF-native infrastructure (the mgj toolchain). Coordinates review and publication." ;
 .
 
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0/stakeholder/10>
+    a mgj:Stakeholder ;
+    mgj:hasRole <https://journal.metagov.org/roles/metagov-staff> ;
+    mgj:roleLabel "Staff" ;
+    mgj:stakeholderAgent <https://journal.metagov.org/orgs/metagov-staff> ;
+    mgj:stakeholderResponsibilities "Provides administrative support: solicits submissions from authors, solicits reviewers, promotes publications to expand readership, secures program funding, and documents impact." ;
+.
+
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0/stakeholder/11>
+    a mgj:Stakeholder ;
+    mgj:hasRole <https://journal.metagov.org/roles/metagov-community> ;
+    mgj:roleLabel "Community" ;
+    mgj:stakeholderAgent <https://journal.metagov.org/orgs/metagov-community> ;
+    mgj:stakeholderResponsibilities "The natural source of authors, reviewers, and readers — Metagov's broader network of practitioners and researchers engaged with digital self-governance." ;
+.
+
 <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/stakeholder/2>
     a mgj:Stakeholder ;
     mgj:hasRole <https://journal.metagov.org/roles/founding-editor> ;
@@ -339,6 +376,14 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     mgj:roleLabel "Founding Contributor" ;
     mgj:stakeholderAgent <https://journal.metagov.org/people/natalia-dashan> ;
     mgj:stakeholderResponsibilities "Founding contributor — helped develop the conceptual framework, processing Joshua Tan's brainstorming into a concrete design that Michael Zargham could implement." ;
+.
+
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0/stakeholder/9>
+    a mgj:Stakeholder ;
+    mgj:hasRole <https://journal.metagov.org/roles/research-directors> ;
+    mgj:roleLabel "Research Directors" ;
+    mgj:stakeholderAgent <https://journal.metagov.org/orgs/metagov-research-directors> ;
+    mgj:stakeholderResponsibilities "Expertise kernel of Metagov; the natural pool from which editors and reviewers are drawn." ;
 .
 
 <https://journal.metagov.org/roles/founding-contributor>

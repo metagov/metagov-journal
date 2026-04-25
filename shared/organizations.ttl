@@ -6,3 +6,18 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     foaf:homepage "https://metagov.org"^^xsd:anyURI ;
     foaf:name "Metagov" ;
 .
+
+<https://journal.metagov.org/orgs/metagov-community>
+    a foaf:Organization ;
+    foaf:name "Metagov Community" ;
+.
+
+<https://journal.metagov.org/orgs/metagov-research-directors>
+    a foaf:Organization ;
+    foaf:name "Metagov Research Directors" ;
+.
+
+<https://journal.metagov.org/orgs/metagov-staff>
+    a foaf:Organization ;
+    foaf:name "Metagov Staff" ;
+.
