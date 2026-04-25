@@ -7,7 +7,7 @@
 - [Reading the journal](Reading) — discover and read institutional specifications
 - [Submitting a specification](Submitting) — author and submit a new specification
 - [Participating in review](Reviewing) — peer-review open submissions
-- [Contributing to the framework](Contributing) — evolve the catechism, criteria, and tools
+- [Contributing to infrastructure](Contributing) — improve the schema, CLI, parser, compilers, and CI that everyone depends on
 
 ## Institutions
 

@@ -1,29 +1,42 @@
-# Contributing to the Framework
+# Contributing to Infrastructure
 
-The journal itself is a living institution — its catechism, evaluation criteria, ontology, and tooling all evolve through the same GitHub-native workflow used for submissions.
+Infrastructure contributions evolve the journal's machinery itself — the typed schema, the tooling, and the AI facilitation that every author and reviewer depends on. This is a **distinct mode of participation** from authoring submissions, peer-reviewing them, or serving as an editor: infrastructure contributions improve how *every* submission gets processed, not the substance of any single submission.
 
-## Three modes of contribution
+## What counts as infrastructure
 
-- **Open an [issue](https://github.com/metagov/metagov-journal/issues)** for proposals, gaps, bugs, or questions about the framework. Issues are the right home for "the catechism doesn't account for X" or "the SHACL shape is too strict about Y."
+| Surface | What it does |
+| --- | --- |
+| `ontology/mgj.ttl` | OWL classes defining the catechism schema |
+| `ontology/shapes/**` | SHACL shapes gating validation (per-question + system) |
+| `src/mgj/models.py`, `serialize.py` | Pydantic ↔ RDF serialization / deserialization |
+| `src/mgj/cli.py`, `src/mgj/commands/**` | The `mgj` command-line interface |
+| `src/mgj/compilers/**` | Deterministic compilation: `instance.ttl` → `compiled.md` and the wiki |
+| `src/mgj/parser/**` | LLM-assisted catechism extraction — the **AI facilitation layer** |
+| `src/mgj/parser/prompts.py` | The prompt templates that shape extraction behavior |
+| `.github/workflows/**` | CI: validate, compile, publish the wiki |
+| `scripts/**` | Operational scripts (e.g. self-submission rebuild) |
 
-- **Open a PR against framework files**:
-  - `catechism.md` — the nine questions
-  - `criteria.md`, `evaluation.md` — review standards
-  - `ontology/mgj.ttl`, `ontology/shapes/**` — the schema
-  - `src/mgj/**` — CLI, parser, compilers
-  - `scripts/**` — operational scripts
+## How to contribute
 
-  Framework PRs follow the same review process as submissions: comment, iterate, merge.
+1. **Open an [issue](https://github.com/metagov/metagov-journal/issues)** describing the gap, proposal, or bug. For non-trivial proposals, discuss in the issue before writing code.
+2. **Fork the repo and branch** off `main`.
+3. **Make your change.** For ontology / SHACL changes, ensure existing submissions still validate. For CLI / parser changes, add or update tests in `tests/`. For workflow changes, describe what triggers and what side effects.
+4. **Open a PR.** `validate.yml` runs `pytest`, SHACL system validation on every submission, and a compile-staleness check.
+5. **Code owners review** per [`.github/CODEOWNERS`](https://github.com/metagov/metagov-journal/blob/main/.github/CODEOWNERS). Reviewers check correctness, scope, backwards compatibility (does this break existing submissions?), and alignment with the journal's design principles.
+6. **Merge.** Once approved and CI is green, merge to `main` triggers `compile.yml`, which recompiles every `compiled.md` and republishes the wiki.
 
-- **Discuss** in the PR thread. Substantive framework changes warrant editorial review and may benefit from broader notice; tag editors when relevant.
+## Framework changes vs. infrastructure changes
 
-## What's a "framework" change vs. a "submission" change?
+A note on scope: changes to [`catechism.md`](https://github.com/metagov/metagov-journal/blob/main/catechism.md), [`criteria.md`](https://github.com/metagov/metagov-journal/blob/main/criteria.md), or [`evaluation.md`](https://github.com/metagov/metagov-journal/blob/main/evaluation.md) are **framework changes**, not infrastructure changes. They alter what every author must answer or how reviewers evaluate; they warrant **editorial group review** beyond code-owner approval. If you're proposing a catechism question change or a new evaluation criterion, expect a longer discussion.
 
-- A *submission* change touches files only in `submissions/{slug}/` and `shared/` (when adding new people/orgs). It documents an institution.
-- A *framework* change touches root-level docs, the ontology, the SHACL shapes, the CLI, or the workflows. It changes how all submissions are written, validated, or published.
+## How this fits with the other modes
 
-The same tooling reviews both — the difference is intent and scope.
+| Role | What they do |
+| --- | --- |
+| **Reader** | Browses the wiki and repo to learn from documented institutions |
+| **Author** | Documents an institution they participate in, answering the catechism |
+| **Reviewer** | Peer-reviews open submissions on substance |
+| **Editor** | Coordinates review, makes publication decisions (appointed) |
+| **Infrastructure contributor** | Improves the schema, tooling, and AI facilitation that everyone else depends on (open — anyone can contribute) |
 
-## Versioning
-
-The framework follows semantic versioning. Backward-incompatible changes to the catechism or ontology (e.g., adding a required entity type) bump the major version. Submissions are pinned to the version of the framework they were written against.
+Recurring substantive infrastructure contributors may be invited into the editorial group over time, but contributing infrastructure doesn't require editorial appointment.

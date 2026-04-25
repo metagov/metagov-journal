@@ -38,9 +38,23 @@ To participate in peer review:
 ## For Readers
 
 To understand the framework:
+
 - [Background](./background.md) - intellectual foundations
 - [Catechism](./catechism.md) - core documentation framework
 - [Implementation](./implementation.md) - how the journal operates
+
+## For Infrastructure Contributors
+
+The schema, tooling, and AI-facilitation layer that processes every submission are themselves open to contribution — distinct from authoring or reviewing. Surfaces include the OWL ontology, SHACL shapes, the `mgj` CLI, the serialization/deserialization layer, the compilers, the parser prompts, and the CI workflows.
+
+To contribute infrastructure:
+
+1. Open an [issue](https://github.com/metagov/metagov-journal/issues) describing the gap, proposal, or bug
+2. Fork, branch, make your change with tests where applicable
+3. Open a PR — code owners review per [`.github/CODEOWNERS`](./.github/CODEOWNERS)
+4. See the wiki's [Contributing](https://github.com/metagov/metagov-journal/wiki/Contributing) page for the full surface inventory and review expectations
+
+Note: changes to the catechism, criteria, or evaluation docs are *framework* changes (different from infrastructure changes) and warrant editorial-group review beyond code-owner approval.
 
 ## Repository Structure
 

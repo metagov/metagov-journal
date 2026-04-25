@@ -2,14 +2,14 @@
 
 **[Home](Home)** — index of submissions
 
-### How to engage
+## How to engage
 
-- [Reading](Reading)
-- [Submitting](Submitting)
-- [Reviewing](Reviewing)
-- [Contributing](Contributing)
+- [Reading](Reading) — readers
+- [Submitting](Submitting) — authors
+- [Reviewing](Reviewing) — peer reviewers
+- [Contributing](Contributing) — infrastructure
 
-### Reference
+## Reference
 
 - [Catechism](https://github.com/metagov/metagov-journal/blob/main/catechism.md)
 - [Evaluation criteria](https://github.com/metagov/metagov-journal/blob/main/criteria.md)
