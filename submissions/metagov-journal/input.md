@@ -50,6 +50,6 @@ Evolution operates through multiple mechanisms. **Immediate adaptation** happens
 - Zargham, M., et al. (2023). ["What Constitutes a Constitution"](https://zenodo.org/records/10609125) — intersection between technology and legal theory
 - Potts, J., et al. (2017). ["A Journal is a Club"](https://www.tandfonline.com/doi/abs/10.1080/08109028.2017.1386949) — initiates the discussion of a journal in institutional-economic terms
 - [OpenMBEE](https://www.openmbee.org/) — methodological lineage: formal documentation and Model Management Systems on Git+RDF
-- [Dynamical Systems Group](https://www.dynamicalsystemsgroup.com/) — methodological lineage: TRDs, RTMs, and MOSA Product Management adapted here for institutional documentation
+- [Dynamical Systems Group](https://www.dynamicalsystemsgroup.com/) — methodological lineage: TRLs, RTMs, and MOSA Product Management adapted here for institutional documentation
 - [GitHub repository](https://github.com/metagov/metagov-journal) — living infrastructure and version history
 - [Metagov organization](https://metagov.org) — organizational home and mission alignment
