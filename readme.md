@@ -10,6 +10,16 @@ The Metagov Journal addresses this gap by publishing peer-reviewed specification
 
 This journal itself is a living institution, evolving through use while maintaining scholarly standards through version control and DOI assignment.
 
+## Attribution and Methodological Lineage
+
+The technical approach used in this repository — schema-driven Git+RDF authoring, deterministic compilation from canonical Turtle to Markdown, SHACL-validated structured documentation, and the inner-loop / outer-loop pattern for author-confirmed extraction — is **derived from prior work carried out by Michael Zargham** in two settings whose contributions we cite explicitly:
+
+- **[OpenMBEE](https://www.openmbee.org/)** (Open Model-Based Engineering Environment) pioneered formal documentation and Model Management Systems built on **Git and RDF**. The Metagov Journal's pattern of treating the typed RDF graph as source-of-truth and compiled Markdown/wiki views as derived artifacts originates in OpenMBEE practice.
+
+- **[Dynamical Systems Group](https://www.dynamicalsystemsgroup.com/)** operationalized that research into specific document classes used in engineering programs — **Technology Readiness Documents (TRDs)**, **Requirements Traceability Matrices (RTMs)**, and **MOSA (Modular Open Systems Approach) Product Management**. The catechism-driven, SHACL-gated authoring loop and the per-question entity-extraction pipeline used here are direct adaptations of Dynamical Systems Group tooling, recast for institutional documentation rather than technology-readiness assessment.
+
+Proper attribution matters to us: the Metagov Journal exists in the form it does — schema-first, deterministic, content-addressable — because of those prior contributions. The catechism-as-schema approach, the determinism invariant for compiled artifacts, and the PROV-O extraction provenance were developed in the engineering-documentation context first and ported here under the same author's continuity.
+
 ## For Authors
 
 To submit institutional documentation:
@@ -66,14 +76,22 @@ This repository maintains two layers:
 
 ## Governance
 
-The Metagov Journal is a project of [Metagov](https://metagov.org), a nonprofit organization cultivating tools, practices, and communities for digital self-governance.
+The Metagov Journal is a program of [Metagov](https://metagov.org), a nonprofit organization cultivating tools, practices, and communities for digital self-governance. **Liz Barry**, Metagov's Executive Director, is responsible for resource allocation and ongoing supervision of the program — assigning staff time, overseeing operations, and ensuring accountability for outcomes.
 
-Initial Editorial Board:
-- Joshua Tan (Lead)
-- Seth Frey
-- Ellie Rennie
-- Michael Zargham
-- `<tbd>`
+**Lead Editor:** Michael Zargham — credit for the design and development of the catechism framework, review processes, and RDF-native infrastructure.
+
+**Founding Editors** — the convening editorial group:
+
+- Joshua Tan — credit for the founding idea
+- Seth Frey — cognitive-science perspective
+- Ellie Rennie — digital-ethnography perspective
+
+**Founding Contributors** — helped develop the conceptual framework that bridges Tan's brainstorming to Zargham's implementation:
+
+- Ilan Ben-Meir
+- Natalia Dashan
+
+The full structured stakeholder graph for the journal is canonical in [`submissions/metagov-journal/instance.ttl`](./submissions/metagov-journal/instance.ttl) and rendered as a navigable view in the [wiki](https://github.com/metagov/metagov-journal/wiki).
 
 ## Quick Links
 
