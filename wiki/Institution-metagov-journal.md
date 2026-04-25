@@ -10,15 +10,15 @@ The Metagov Journal produces and maintains a peer-reviewed commons of institutio
 
 ## 2. Stakeholders and roles
 
-Authors document institutions they understand deeply, answering the catechism and providing supporting materials. Reviewers evaluate submissions for completeness, clarity, and contribution to knowledge. Michael Zargham serves as lead editor, having built and now maintaining the journal's RDF-native pipeline. Joshua Tan, Seth Frey, and Ellie Rennie form the founding editor group, contributing platform-governance, cognitive-science, and digital-ethnography perspectives respectively. Readers access documented patterns for learning and adaptation. Liz Barry, Executive Director of Metagov, provides organizational sponsorship — the journal program exists as a result of her support. Metagov itself provides the nonprofit home and mission alignment.
+Authors document institutions they understand deeply, answering the catechism and providing supporting materials. Reviewers evaluate submissions for completeness, clarity, and contribution to knowledge. Joshua Tan, Metagov co-founder, is credited with the founding idea — convening the editorial group and articulating the gap a peer-reviewed venue for living-institution documentation could fill. Michael Zargham serves as lead editor and is credited with the design and development of the catechism framework, review processes, and RDF-native infrastructure. Seth Frey and Ellie Rennie complete the founding editor group with cognitive-science and digital-ethnography perspectives respectively. Readers access documented patterns for learning and adaptation. Liz Barry, Executive Director of Metagov, is responsible for resource allocation and ongoing supervision — assigning staff time, overseeing operations, and ensuring accountability for outcomes; the journal program exists as a result of her organizational support. Metagov itself provides the nonprofit home and mission alignment.
 
 ### Stakeholders
 
-- **Lead Editor**: Michael Zargham — Built and maintains the journal's RDF-native pipeline; coordinates review and publication.
-- **Founding Editor**: Joshua Tan — Co-founder and original driver; convened the editorial group; provides platform-governance perspective.
+- **Lead Editor**: Michael Zargham — Lead editor — credit for design and development of the catechism framework, review processes, and RDF-native infrastructure (the mgj toolchain). Coordinates review and publication.
+- **Founding Editor**: Joshua Tan — Founding editor — credit for the founding idea; conceived the journal as a venue for documenting living institutions and convened the editorial group. Provides platform-governance perspective.
 - **Founding Editor**: Seth Frey — Founding editor; provides cognitive-science perspective.
 - **Founding Editor**: Ellie Rennie — Founding editor; provides digital-ethnography perspective.
-- **Organizational Sponsor**: Liz Barry — Executive Director of Metagov; the journal program exists as a result of her organizational support.
+- **Organizational Sponsor**: Liz Barry — Executive Director of Metagov — credit for resource allocation and ongoing supervision; assigns staff time, oversees operations, and is accountable for program outcomes. The journal program exists as a result of her organizational support.
 - **Organizational Home**: Metagov — Provides nonprofit infrastructure and mission alignment.
 
 ## 3. Environmental factors
@@ -68,11 +68,11 @@ Primary activity occurs at github.com/metagov/journal — submissions, reviews, 
 
 ## 6. Author relationship
 
-As author of this draft and current lead editor, I (Michael Zargham) am a systems engineer and protocol architect with deep experience in open source communities — my role in Metagov is often to map systems and provide operational policy recommendations. I built the RDF-native pipeline that this submission demonstrates and continue to refine it. Joshua Tan, Metagov co-founder and the journal's original driver, provides vision and organizational continuity. Joshua and I both serve on Metagov's board, creating alignment but also potential conflicts of interest. The founding editorial group's review of this self-submission is necessarily reflexive.
+As author of this draft and current lead editor, I (Michael Zargham) designed and developed the catechism framework, review processes, and RDF-native infrastructure (the mgj toolchain) that this submission demonstrates. Joshua Tan, Metagov co-founder, is credited with the founding idea — he convened the editorial group and articulated the gap this journal addresses. Liz Barry, as Metagov's Executive Director, is responsible for resource allocation and ongoing supervision of the program. Joshua and I both serve on Metagov's board, creating alignment but also potential conflicts of interest. The founding editorial group's review of this self-submission is necessarily reflexive.
 
 *Authored by **Michael Zargham** — lead editor.*
 
-*Disclosure:* Author (Zargham) is the current lead editor and built the journal's tooling; potential conflict of interest. Author also serves on Metagov's board with Joshua Tan. Bootstrap submission receives review from fellow founding editors rather than external reviewers. Blind spots likely include overemphasis on technical mechanisms and the perspective of the tool-builder.
+*Disclosure:* Author (Zargham) is the current lead editor and designed/developed the journal's catechism framework, processes, and tooling. Joshua Tan is credited with the founding idea and serves on Metagov's board with the author. Liz Barry, as Executive Director of Metagov, allocates resources and supervises operations. Bootstrap submission receives review from fellow founding editors rather than external reviewers. Blind spots likely include overemphasis on technical mechanisms and the perspective of the tool-builder.
 
 ## 7. Origins
 
