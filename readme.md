@@ -71,14 +71,22 @@ This repository maintains two layers:
 
 ## Governance
 
-The Metagov Journal is a project of [Metagov](https://metagov.org), a nonprofit organization cultivating tools, practices, and communities for digital self-governance.
+The Metagov Journal is a program of [Metagov](https://metagov.org), a nonprofit organization cultivating tools, practices, and communities for digital self-governance. **Liz Barry**, Metagov's Executive Director, is responsible for resource allocation and ongoing supervision of the program — assigning staff time, overseeing operations, and ensuring accountability for outcomes.
 
-Initial Editorial Board:
-- Joshua Tan (Lead)
-- Seth Frey
-- Ellie Rennie
-- Michael Zargham
-- `<tbd>`
+**Lead Editor:** Michael Zargham — credit for the design and development of the catechism framework, review processes, and RDF-native infrastructure.
+
+**Founding Editors** — the convening editorial group:
+
+- Joshua Tan — credit for the founding idea
+- Seth Frey — cognitive-science perspective
+- Ellie Rennie — digital-ethnography perspective
+
+**Founding Contributors** — helped develop the conceptual framework that bridges Tan's brainstorming to Zargham's implementation:
+
+- Ilan Ben-Meir
+- Natalia Dashan
+
+The full structured stakeholder graph for the journal is canonical in [`submissions/metagov-journal/instance.ttl`](./submissions/metagov-journal/instance.ttl) and rendered as a navigable view in the [wiki](https://github.com/metagov/metagov-journal/wiki).
 
 ## Quick Links
 
