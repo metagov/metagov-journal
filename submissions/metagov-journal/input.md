@@ -20,7 +20,7 @@ The foundational rules emerge from three layers. **The Catechism** (nine questio
 
 ## 5. Where are the field sites?
 
-The institution operates across connected venues. Primary activity occurs at [github.com/metagov/journal](https://github.com/metagov/journal)—submissions, reviews, and discussions. The `<preprint server/overlay journal>` provides stable citations. The [Metagov website](https://metagov.org) offers organizational context. Joshua Tan's [introductory blog post](https://journal.metagov.org/2025/08/09/metagov-journal.html) articulates the founding vision. Future sites may include dedicated web interface for browsing submissions and overlay journal services for enhanced discovery. Each venue serves different stakeholder needs while maintaining coherent institutional identity.
+The institution operates across connected venues. Primary activity occurs at [github.com/metagov/metagov-journal](https://github.com/metagov/metagov-journal)—submissions, reviews, and discussions. The auto-generated [wiki](https://github.com/metagov/metagov-journal/wiki) is the navigable reader's view, with cross-linked Institution / Person / Organization pages and engagement docs. Stable archival citations are planned via Zenodo for DOI assignment. The [Metagov website](https://metagov.org) offers organizational context. Joshua Tan's [introductory blog post](https://journal.metagov.org/2025/08/09/metagov-journal.html) articulates the founding vision. Each venue serves different stakeholder needs while maintaining coherent institutional identity.
 
 ## 6. What is your relationship to the institution?
 

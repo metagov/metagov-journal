@@ -14,16 +14,16 @@ This journal itself is a living institution, evolving through use while maintain
 
 To submit institutional documentation:
 1. Review the [Catechism](./catechism.md) - nine questions your documentation must answer
-2. Study the [Specification](./submissions/metagov-journal/specification.md) - example of complete documentation
+2. Study the [example submission](./submissions/metagov-journal/compiled.md) - what a complete, published submission looks like
 3. Understand the [Criteria](./criteria.md) - how submissions are evaluated
-4. Follow [Contributing](./CONTRIBUTING.md) - technical submission process
+4. Follow [Contributing](./contributing.md) - technical submission process
 
 ## For Reviewers
 
 To participate in peer review:
 1. Read the [Evaluation](./evaluation.md) framework
 2. Understand the [Criteria](./criteria.md) for assessment
-3. See [Contributing](./CONTRIBUTING.md) for reviewer guidelines
+3. See [Contributing](./contributing.md) for reviewer guidelines
 
 ## For Readers
 
@@ -37,19 +37,24 @@ To understand the framework:
 ```
 /
 ├── readme.md
-├── background.md
-├── catechism.md
-├── criteria.md
-├── evaluation.md
-├── implementation.md
-├── CONTRIBUTING.md
+├── background.md             # intellectual foundations
+├── catechism.md              # the 9-question framework
+├── criteria.md               # evaluation principles
+├── evaluation.md             # reviewer framework
+├── contributing.md           # author/reviewer guide
+├── implementation.md         # operational processes
+├── ontology/                 # OWL schema + SHACL shapes
+├── shared/                   # canonical people/orgs/role registries
 ├── submissions/
-│   └── [institution-name]/
-│       ├── manifest.yml
-│       ├── specification.md
-│       └── supporting/
-└── .github/
-    └── workflows and templates
+│   └── [institution-slug]/
+│       ├── input.md          # author's prose answering the catechism
+│       ├── instance.ttl      # canonical RDF graph (CLI-managed)
+│       ├── compiled.md       # generated published article
+│       └── extraction-trace.json
+├── wiki/                     # auto-generated; published to GitHub Wiki
+├── src/mgj/                  # mgj CLI tool implementation
+├── scripts/                  # operational scripts (e.g. self-submission build)
+└── .github/                  # CODEOWNERS + validate/compile workflows
 ```
 
 ## Living Documentation
@@ -73,9 +78,9 @@ Initial Editorial Board:
 ## Quick Links
 
 - **Organization**: [Metagov](https://metagov.org)
-- **Archive**: `tbd` (preprint server and/or overlay journal link)
-- **Discussions**: [GitHub Discussions](https://github.com/metagov/metagov-journal/discussions)
-- **Issues**: [GitHub Issues](https://github.com/metagov/journal/issues)
+- **Wiki**: [navigable index of submissions, people, and engagement docs](https://github.com/metagov/metagov-journal/wiki)
+- **Archive**: planned via Zenodo for stable DOI citations (operational details TBD)
+- **Issues**: [GitHub Issues](https://github.com/metagov/metagov-journal/issues)
 
 ## References
 
@@ -101,7 +106,7 @@ Initial Editorial Board:
 
 ## License
 
-["Attribution-ShareAlike 4.0 International'](LICENSE)
+["Attribution-ShareAlike 4.0 International"](LICENSE)
 
 All institutions published in the Metagov Journal via this github based framework will inherit CC-BY-SA-4 license designation, and have the Metagov-Journal Institution as a cited reference.
 
