@@ -49,3 +49,48 @@ jobs:
           else
             echo "no changes to commit"
           fi
+
+      - name: Publish wiki/ to GitHub Wiki
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          SHA: ${{ github.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          WIKI_DIR=".wiki-tmp"
+          WIKI_URL="https://x-access-token:${GH_TOKEN}@github.com/${REPO}.wiki.git"
+          rm -rf "$WIKI_DIR"
+
+          # Existing wiki (>=1 commit) is clonable; a freshly-enabled wiki
+          # with no pages may not yet have a clonable .wiki.git endpoint —
+          # in that case we initialize a fresh local repo and let the
+          # first push create the remote branch.
+          if git clone --depth 1 "$WIKI_URL" "$WIKI_DIR" 2>/dev/null; then
+            echo "cloned existing wiki"
+            # Remove only auto-published pages so any hand-edited
+            # _Sidebar.md / _Footer.md / custom page is preserved.
+            find "$WIKI_DIR" -maxdepth 1 -type f \
+              \( -name "Home.md" \
+              -o -name "Institution-*.md" \
+              -o -name "Person-*.md" \
+              -o -name "Organization-*.md" \) -delete
+          else
+            echo "wiki has no commits yet; initializing local repo"
+            mkdir -p "$WIKI_DIR"
+            git -C "$WIKI_DIR" init -q -b master
+            git -C "$WIKI_DIR" remote add origin "$WIKI_URL"
+          fi
+
+          cp wiki/*.md "$WIKI_DIR/"
+
+          cd "$WIKI_DIR"
+          git config user.name "metagov-journal-bot"
+          git config user.email "bot@metagov.org"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "no wiki changes to publish"
+            exit 0
+          fi
+          git commit -q -m "auto-publish wiki from $SHA"
+          git push -q -u origin HEAD:master
