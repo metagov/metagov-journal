@@ -1,0 +1,15 @@
+# =============================================================================
+# Shared Vocabularies Registry
+#
+# Open SKOS schemes that grow over time (mgj:RoleType). Closed schemes
+# (mgj:LessigModalities, mgj:ConstitutionalElementType) live in the
+# ontology. New role concepts are added here via `mgj` CLI when
+# stakeholders introduce previously-unseen role labels.
+# =============================================================================
+
+@prefix mgj:     <https://journal.metagov.org/ns/mgj#> .
+@prefix mgjr:    <https://journal.metagov.org/roles/> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+
+# (role concepts added by CLI as new submissions introduce them)
