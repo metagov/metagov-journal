@@ -249,11 +249,41 @@ def main() -> None:
         run(["evolution", "add", SLUG, "--label", label, "--description", desc])
 
     step("Q9 — references")
+    # Author bylines are stored as a single dcterms:creator literal so order
+    # is preserved (RDF triples are unordered; multi-creator references would
+    # otherwise lose authorship sequence). Identifiers are DOI URLs where DOIs
+    # exist; bare URLs are kept for refs that don't have one (e.g. blog posts).
     refs = [
-        ("Introducing the Metagov Journal", "https://journal.metagov.org/2025/08/09/metagov-journal.html", "Joshua Tan", "2025"),
-        ("Protocols and Institutions", "https://zenodo.org/records/15122312", "Michael Zargham,Ilan Ben-Meir", "2024"),
-        ("What Constitutes a Constitution", "https://zenodo.org/records/10609125", "Michael Zargham", "2023"),
-        ("A Journal is a Club", "https://www.tandfonline.com/doi/abs/10.1080/08109028.2017.1386949", "Jason Potts", "2017"),
+        (
+            "Introducing the Metagov Journal: Publishing Living Institutions",
+            "https://journal.metagov.org/2025/08/09/metagov-journal.html",
+            "Tan, J.",
+            "2025",
+        ),
+        (
+            "Protocols and Institutions",
+            "https://doi.org/10.5281/zenodo.15122312",
+            "Zargham, M. & Ben-Meir, I.",
+            "2025",
+        ),
+        (
+            "What Constitutes a Constitution?",
+            "https://doi.org/10.5281/zenodo.10609125",
+            "Zargham, M., Alston, E., Nabben, K., & Ben-Meir, I.",
+            "2023",
+        ),
+        (
+            "A Journal is a Club",
+            "https://doi.org/10.1080/08109028.2017.1386949",
+            "Potts, J., Hartley, J., Montgomery, L., Neylon, C., & Rennie, E.",
+            "2017",
+        ),
+        (
+            "Building the Loop: The Role of Ethnography in Artificial Organisational Intelligence",
+            "https://doi.org/10.1111/epic.70009",
+            "Rennie, E., Nabben, K., Zargham, M., Potts, J., Coco, B.A., Miller, L., & Green, M.",
+            "2026",
+        ),
     ]
     for title, ident, creators, date in refs:
         run(["reference", "add", SLUG, "--title", title, "--identifier", ident, "--creators", creators, "--date", date])
