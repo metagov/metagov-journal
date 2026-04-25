@@ -1,0 +1,58 @@
+# Q9 — References: per-question SHACL shapes
+
+@prefix mgj:     <https://journal.metagov.org/ns/mgj#> .
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+
+<https://journal.metagov.org/shapes/q9-references>
+    a owl:Ontology ;
+    dcterms:title   "Q9 References Shapes" ;
+    owl:imports     <https://journal.metagov.org/ns/mgj> .
+
+
+mgj:Q9NarrativeShape
+    a sh:NodeShape ;
+    sh:targetClass mgj:Submission ;
+    sh:property [
+        sh:path      mgj:q9Narrative ;
+        sh:datatype  xsd:string ;
+        sh:minLength 1 ;
+        sh:maxCount  1 ;
+        sh:message   "Q9 narrative must be a non-empty string." ;
+    ] .
+
+
+mgj:ReferenceShape
+    a sh:NodeShape ;
+    sh:targetClass mgj:Reference ;
+
+    sh:property [
+        sh:path      dcterms:title ;
+        sh:datatype  xsd:string ;
+        sh:minCount  1 ;
+        sh:maxCount  1 ;
+        sh:minLength 1 ;
+        sh:message   "Every Reference must have a dcterms:title." ;
+    ] ;
+
+    sh:property [
+        sh:path      dcterms:identifier ;
+        sh:minCount  1 ;
+        sh:maxCount  1 ;
+        sh:message   "Every Reference must have a dcterms:identifier (DOI or canonical URL)." ;
+    ] ;
+
+    sh:property [
+        sh:path      dcterms:date ;
+        sh:maxCount  1 ;
+        sh:message   "If present, dcterms:date must be a single literal." ;
+    ] ;
+
+    sh:property [
+        sh:path      dcterms:creator ;
+        sh:message   "If present, dcterms:creator may be repeated (one or more authors)." ;
+    ] .

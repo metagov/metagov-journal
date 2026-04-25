@@ -1,0 +1,243 @@
+# =============================================================================
+# Metagov Journal — System-level SHACL Shapes
+#
+# Outer-loop validation. A submission must pass these shapes after all nine
+# inner-loop questions have been affirmed. Encodes:
+#   - Cardinality: every Qi has its required entities and narrative
+#   - Integrity: no UnresolvedAgent in the affirmed graph
+#   - Resolution: stakeholder agents resolve to foaf:Person or foaf:Organization
+#                 (not bare blank nodes); roles resolve to skos:Concepts
+#   - Submission metadata: institution, date, version, primary author
+# =============================================================================
+
+@prefix mgj:     <https://journal.metagov.org/ns/mgj#> .
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+
+
+<https://journal.metagov.org/shapes/system>
+    a owl:Ontology ;
+    dcterms:title       "Metagov Journal System SHACL Shapes" ;
+    dcterms:description "System-level constraints applied to a fully affirmed submission. Required for outer-loop validation, CI staleness checks, and merge gating." ;
+    owl:versionInfo     "0.1.0" ;
+    owl:imports         <https://journal.metagov.org/ns/mgj> .
+
+
+# =============================================================================
+# Submission — top-level required fields and per-Q cardinalities
+# =============================================================================
+
+mgj:SubmissionSystemShape
+    a sh:NodeShape ;
+    sh:targetClass mgj:Submission ;
+    rdfs:label "Submission System Shape" ;
+
+    # --- Submission metadata ---
+    sh:property [
+        sh:path     mgj:documents ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class    mgj:Institution ;
+        sh:message  "A Submission must document exactly one Institution." ;
+    ] ;
+    sh:property [
+        sh:path      mgj:submissionDate ;
+        sh:datatype  xsd:date ;
+        sh:minCount  1 ;
+        sh:maxCount  1 ;
+        sh:message   "A Submission must carry a submissionDate." ;
+    ] ;
+    sh:property [
+        sh:path      mgj:submissionVersion ;
+        sh:datatype  xsd:string ;
+        sh:minCount  1 ;
+        sh:maxCount  1 ;
+        sh:minLength 1 ;
+        sh:message   "A Submission must carry a submissionVersion." ;
+    ] ;
+
+    # --- Per-Q narratives (Q1..Q9 all required) ---
+    sh:property [ sh:path mgj:q1Narrative ; sh:minCount 1 ; sh:datatype xsd:string ; sh:minLength 1 ; sh:message "Q1 narrative is required." ] ;
+    sh:property [ sh:path mgj:q2Narrative ; sh:minCount 1 ; sh:datatype xsd:string ; sh:minLength 1 ; sh:message "Q2 narrative is required." ] ;
+    sh:property [ sh:path mgj:q3Narrative ; sh:minCount 1 ; sh:datatype xsd:string ; sh:minLength 1 ; sh:message "Q3 narrative is required." ] ;
+    sh:property [ sh:path mgj:q4Narrative ; sh:minCount 1 ; sh:datatype xsd:string ; sh:minLength 1 ; sh:message "Q4 narrative is required." ] ;
+    sh:property [ sh:path mgj:q5Narrative ; sh:minCount 1 ; sh:datatype xsd:string ; sh:minLength 1 ; sh:message "Q5 narrative is required." ] ;
+    sh:property [ sh:path mgj:q6Narrative ; sh:minCount 1 ; sh:datatype xsd:string ; sh:minLength 1 ; sh:message "Q6 narrative is required." ] ;
+    sh:property [ sh:path mgj:q7Narrative ; sh:minCount 1 ; sh:datatype xsd:string ; sh:minLength 1 ; sh:message "Q7 narrative is required." ] ;
+    sh:property [ sh:path mgj:q8Narrative ; sh:minCount 1 ; sh:datatype xsd:string ; sh:minLength 1 ; sh:message "Q8 narrative is required." ] ;
+    sh:property [ sh:path mgj:q9Narrative ; sh:minCount 1 ; sh:datatype xsd:string ; sh:minLength 1 ; sh:message "Q9 narrative is required." ] ;
+
+    # --- Per-Q cardinality (typed entities) ---
+    sh:property [
+        sh:path     mgj:hasStakeholder ;
+        sh:minCount 1 ;
+        sh:class    mgj:Stakeholder ;
+        sh:message  "Q2: at least one Stakeholder is required." ;
+    ] ;
+    sh:property [
+        sh:path     mgj:hasEnvironmentalFactor ;
+        sh:minCount 1 ;
+        sh:class    mgj:EnvironmentalFactor ;
+        sh:message  "Q3: at least one EnvironmentalFactor is required." ;
+    ] ;
+    sh:property [
+        sh:path     mgj:hasConstitutionalElement ;
+        sh:minCount 1 ;
+        sh:class    mgj:ConstitutionalElement ;
+        sh:message  "Q4: at least one ConstitutionalElement is required." ;
+    ] ;
+    sh:property [
+        sh:path     mgj:hasFieldSite ;
+        sh:minCount 1 ;
+        sh:class    mgj:FieldSite ;
+        sh:message  "Q5: at least one FieldSite is required." ;
+    ] ;
+    sh:property [
+        sh:path     mgj:authoredBy ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class    foaf:Person ;
+        sh:message  "Q6: a primary author (foaf:Person) is required." ;
+    ] ;
+    sh:property [
+        sh:path      mgj:authorDisclosure ;
+        sh:datatype  xsd:string ;
+        sh:minCount  1 ;
+        sh:maxCount  1 ;
+        sh:minLength 1 ;
+        sh:message   "Q6: an author disclosure statement is required." ;
+    ] ;
+    sh:property [
+        sh:path     mgj:hasOriginEvent ;
+        sh:minCount 1 ;
+        sh:class    mgj:OriginEvent ;
+        sh:message  "Q7: at least one OriginEvent is required." ;
+    ] ;
+    sh:property [
+        sh:path     mgj:hasEvolutionMechanism ;
+        sh:minCount 1 ;
+        sh:class    mgj:EvolutionMechanism ;
+        sh:message  "Q8: at least one EvolutionMechanism is required." ;
+    ] ;
+    sh:property [
+        sh:path     mgj:hasReference ;
+        sh:minCount 1 ;
+        sh:class    mgj:Reference ;
+        sh:message  "Q9: at least one Reference is required." ;
+    ] ;
+
+    # --- LegalContext (optional, at most one) ---
+    sh:property [
+        sh:path     mgj:operatesUnder ;
+        sh:maxCount 1 ;
+        sh:class    mgj:LegalContext ;
+        sh:message  "If present, operatesUnder must reference a single LegalContext." ;
+    ] .
+
+
+# =============================================================================
+# Institution — minimum identification
+# =============================================================================
+
+mgj:InstitutionSystemShape
+    a sh:NodeShape ;
+    sh:targetClass mgj:Institution ;
+
+    sh:property [
+        sh:path      mgj:institutionName ;
+        sh:datatype  xsd:string ;
+        sh:minCount  1 ;
+        sh:maxCount  1 ;
+        sh:minLength 1 ;
+        sh:message   "Institution must have a name." ;
+    ] .
+
+
+# =============================================================================
+# Stakeholder — every agent must be resolved (no UnresolvedAgent in graph)
+# =============================================================================
+
+mgj:StakeholderSystemShape
+    a sh:NodeShape ;
+    sh:targetClass mgj:Stakeholder ;
+
+    sh:property [
+        sh:path     mgj:stakeholderAgent ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        # Allow Person or Organization but reject UnresolvedAgent.
+        sh:not [ sh:class mgj:UnresolvedAgent ] ;
+        sh:message  "All Stakeholders must reference a resolved foaf:Agent (no mgj:UnresolvedAgent in affirmed graph)." ;
+    ] ;
+
+    sh:property [
+        sh:path     mgj:hasRole ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class    skos:Concept ;
+        sh:message  "All Stakeholders must reference a skos:Concept role at the system level." ;
+    ] .
+
+
+# =============================================================================
+# LegalContext — host org and relationship type required when present
+# =============================================================================
+
+mgj:LegalContextSystemShape
+    a sh:NodeShape ;
+    sh:targetClass mgj:LegalContext ;
+
+    sh:property [
+        sh:path     mgj:hostOrganization ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class    foaf:Organization ;
+        sh:message  "Every LegalContext must reference exactly one hostOrganization (foaf:Organization in shared/organizations.ttl)." ;
+    ] ;
+
+    sh:property [
+        sh:path     mgj:legalRelationship ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:in       ( mgj:FiscalSponsor mgj:LegalIncorporation mgj:ParentOrganization mgj:Incubator mgj:Network ) ;
+        sh:message  "Every LegalContext must be typed by exactly one LegalRelationshipType concept." ;
+    ] ;
+
+    sh:property [
+        sh:path      mgj:legalContextDescription ;
+        sh:datatype  xsd:string ;
+        sh:minCount  1 ;
+        sh:maxCount  1 ;
+        sh:minLength 1 ;
+        sh:message   "Every LegalContext must have a description of the host relationship." ;
+    ] ;
+
+    sh:property [
+        sh:path      mgj:fundingReference ;
+        sh:datatype  xsd:string ;
+        sh:maxCount  1 ;
+        sh:message   "If present, fundingReference must be a single literal." ;
+    ] .
+
+
+# =============================================================================
+# No UnresolvedAgent allowed at the system level
+# =============================================================================
+
+mgj:NoUnresolvedAgentShape
+    a sh:NodeShape ;
+    sh:targetClass mgj:UnresolvedAgent ;
+    sh:property [
+        sh:path     rdf:type ;
+        sh:hasValue mgj:UnresolvedAgent ;
+        # By targeting UnresolvedAgent and asserting a violation, any presence
+        # of an UnresolvedAgent in the affirmed graph fails system validation.
+        sh:not [ sh:hasValue mgj:UnresolvedAgent ] ;
+        sh:message  "mgj:UnresolvedAgent instances must be resolved (replaced with a foaf:Person or foaf:Organization) before system validation." ;
+    ] .

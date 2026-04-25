@@ -1,0 +1,261 @@
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX mgj: <https://journal.metagov.org/ns/mgj#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0>
+    a mgj:Submission ;
+    mgj:authorDisclosure "Author serves on Metagov's board with Joshua Tan; potential conflict of interest. Bootstrap submission receives review from fellow research directors rather than external reviewers. Blind spots likely include overemphasis on technical mechanisms." ;
+    mgj:authorRole "co-editor and board member" ;
+    mgj:authoredBy <https://journal.metagov.org/people/michael-zargham> ;
+    mgj:documents <https://journal.metagov.org/institutions/metagov-journal> ;
+    mgj:hasConstitutionalElement
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/constitution/1> ,
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/constitution/2> ,
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/constitution/3> ,
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/constitution/4> ;
+    mgj:hasEnvironmentalFactor
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/factor/1> ,
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/factor/2> ,
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/factor/3> ,
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/factor/4> ;
+    mgj:hasEvolutionMechanism
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/evolution/1> ,
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/evolution/2> ,
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/evolution/3> ;
+    mgj:hasFieldSite
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/fieldsite/1> ,
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/fieldsite/2> ,
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/fieldsite/3> ;
+    mgj:hasOriginEvent <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/origin/1> ;
+    mgj:hasReference
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/reference/1> ,
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/reference/2> ,
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/reference/3> ,
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/reference/4> ;
+    mgj:hasStakeholder
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/stakeholder/1> ,
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/stakeholder/2> ,
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/stakeholder/3> ,
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/stakeholder/4> ,
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/stakeholder/5> ;
+    mgj:operatesUnder <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/legal/1> ;
+    mgj:q1Narrative "The Metagov Journal produces and maintains a peer-reviewed commons of institutional knowledge. Its stable pattern involves practitioners documenting living institutions through structured catechisms, peers reviewing these documentations for completeness and clarity, and the community accumulating reusable organizational patterns. Success manifests as a growing repository of institutional specifications that practitioners reference when designing new organizations or evolving existing ones. The institution functions properly when submissions flow regularly, reviews maintain quality standards, and documented patterns get reused across contexts." ;
+    mgj:q2Narrative "Authors document institutions they understand deeply, answering the catechism and providing supporting materials. Reviewers evaluate submissions for completeness, clarity, and contribution to knowledge. Editors (initially Joshua Tan as lead, with Michael Zargham) coordinate review processes, make publication decisions, and maintain infrastructure. Readers access documented patterns for learning and adaptation. Metagov provides organizational home and alignment with digital self-governance mission, with research directors Seth Frey and Ellie Rennie providing oversight." ;
+    mgj:q3Narrative "The journal operates within overlapping contexts. Technically, it depends on GitHub for version control and collaboration, technical platforms for archival storage and DOIs. Academically, it bridges scholarly publishing conventions with open-source software practices. Legally, it operates under Metagov's nonprofit structure. Normatively, it inherits from both peer review traditions and GitHub collaboration patterns. Economically, it functions as a scholarly club good where contribution enables access to curated knowledge." ;
+    mgj:q4Narrative "The foundational rules emerge from three layers. The Catechism (nine questions) structures all submissions, creating comparable documentation. The Review Criteria define evaluation standards — completeness, clarity, evidence, viability, and contribution. The GitHub Flow establishes procedural rules — fork, submit PR, review, revise, merge." ;
+    mgj:q5Narrative "Primary activity occurs at github.com/metagov/journal — submissions, reviews, and discussions. The Metagov website offers organizational context. Joshua Tan's introductory blog post articulates the founding vision." ;
+    mgj:q6Narrative "As author of this draft, I am a systems engineer and protocol architect with deep experience in open source communities — my role in Metagov is often to map systems and provide operational policy recommendations. Joshua Tan, Metagov co-founder and journal's primary driver, provides vision and organizational support. We both serve on Metagov's board, creating alignment but also potential conflicts of interest." ;
+    mgj:q7Narrative "The journal emerged from Joshua Tan's observation that governance experiments in DAOs, cooperatives, and digital communities generate valuable innovations but lack documentation venues. In late 2024, Tan convened Metagov research directors to design a solution. The founding team brought complementary perspectives: Tan (platform governance), Zargham (systems engineering), Frey (cognitive science), Rennie (digital ethnography)." ;
+    mgj:q8Narrative "Evolution operates through multiple mechanisms. Immediate adaptation happens via GitHub. Periodic review occurs quarterly as editors assess processes and incorporate lessons. Version control enables framework evolution while maintaining citation stability through semantic versioning. Community feedback shapes development through discussions and reviews. Scaling triggers activate new processes as volume grows." ;
+    mgj:q9Narrative "Foundational documents and academic references that ground the journal's design and motivate its operating model." ;
+    mgj:submissionDate "2026-04-25"^^xsd:date ;
+    mgj:submissionVersion "1.0.0" ;
+.
+
+<https://journal.metagov.org/institutions/metagov-journal>
+    a mgj:Institution ;
+    mgj:institutionName "The Metagov Journal" ;
+.
+
+<https://journal.metagov.org/roles/organizational-home>
+    a skos:Concept ;
+    skos:inScheme mgj:RoleType ;
+    skos:prefLabel "Organizational Home" ;
+.
+
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0/constitution/1>
+    a mgj:ConstitutionalElement ;
+    mgj:elementDescription "Nine-question framework that structures every submission, creating comparable documentation." ;
+    mgj:elementLabel "Catechism" ;
+    mgj:elementType mgj:Bylaw ;
+.
+
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0/constitution/2>
+    a mgj:ConstitutionalElement ;
+    mgj:elementDescription "Evaluation standards — completeness, clarity, evidence, viability, contribution." ;
+    mgj:elementLabel "Review Criteria" ;
+    mgj:elementType mgj:Bylaw ;
+.
+
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0/constitution/3>
+    a mgj:ConstitutionalElement ;
+    mgj:elementDescription "Procedural rules — fork, submit PR, review, revise, merge." ;
+    mgj:elementLabel "GitHub Flow" ;
+    mgj:elementType mgj:DecisionProcedure ;
+.
+
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0/constitution/4>
+    a mgj:ConstitutionalElement ;
+    mgj:elementDescription "Constructive feedback tone, reasonable review timelines, transparency in decision-making." ;
+    mgj:elementLabel "Editorial Norms" ;
+    mgj:elementType mgj:Norm ;
+.
+
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0/evolution/1>
+    a mgj:EvolutionMechanism ;
+    mgj:mechanismDescription "Anyone can propose changes to framework documents through GitHub issues and pull requests." ;
+    mgj:mechanismLabel "PR-driven amendment" ;
+.
+
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0/evolution/2>
+    a mgj:EvolutionMechanism ;
+    mgj:mechanismDescription "Editors assess processes and incorporate lessons each quarter." ;
+    mgj:mechanismLabel "Quarterly editorial review" ;
+.
+
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0/evolution/3>
+    a mgj:EvolutionMechanism ;
+    mgj:mechanismDescription "Framework evolution preserves citation stability via versioned releases." ;
+    mgj:mechanismLabel "Semantic versioning" ;
+.
+
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0/factor/1>
+    a mgj:EnvironmentalFactor ;
+    mgj:factorDescription "GitHub provides version control, peer-review tooling, and collaboration infrastructure." ;
+    mgj:lessigModality mgj:Architecture ;
+.
+
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0/factor/2>
+    a mgj:EnvironmentalFactor ;
+    mgj:factorDescription "Inherits scholarly peer-review traditions and open-source GitHub collaboration patterns." ;
+    mgj:lessigModality mgj:Norms ;
+.
+
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0/factor/3>
+    a mgj:EnvironmentalFactor ;
+    mgj:factorDescription "Functions as a scholarly club good: contribution enables access to curated knowledge." ;
+    mgj:lessigModality mgj:Markets ;
+.
+
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0/factor/4>
+    a mgj:EnvironmentalFactor ;
+    mgj:factorDescription "Operates under Metagov's nonprofit structure; subject to nonprofit governance regulation." ;
+    mgj:lessigModality mgj:Law ;
+.
+
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0/fieldsite/1>
+    a mgj:FieldSite ;
+    mgj:fieldSiteDescription "Primary site for submissions, reviews, and discussion." ;
+    mgj:fieldSiteLabel "GitHub repository" ;
+    mgj:fieldSiteURL "https://github.com/metagov/metagov-journal"^^xsd:anyURI ;
+.
+
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0/fieldsite/2>
+    a mgj:FieldSite ;
+    mgj:fieldSiteDescription "Organizational home and mission context." ;
+    mgj:fieldSiteLabel "Metagov website" ;
+    mgj:fieldSiteURL "https://metagov.org"^^xsd:anyURI ;
+.
+
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0/fieldsite/3>
+    a mgj:FieldSite ;
+    mgj:fieldSiteDescription "Joshua Tan's introductory articulation of the journal's vision." ;
+    mgj:fieldSiteLabel "Founding blog post" ;
+    mgj:fieldSiteURL "https://journal.metagov.org/2025/08/09/metagov-journal.html"^^xsd:anyURI ;
+.
+
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0/legal/1>
+    a mgj:LegalContext ;
+    mgj:hostOrganization <https://journal.metagov.org/orgs/metagov> ;
+    mgj:legalContextDescription "The journal operates under Metagov's 501(c)(3) nonprofit infrastructure." ;
+    mgj:legalRelationship mgj:FiscalSponsor ;
+.
+
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0/origin/1>
+    a mgj:OriginEvent ;
+    mgj:originDate "2024-11-01"^^xsd:date ;
+    mgj:originDescription "In late 2024, Joshua Tan convened Metagov research directors to design a journal for documenting living institutions." ;
+    mgj:originLabel "Founding convening" ;
+    mgj:originParticipant
+        <https://journal.metagov.org/people/ellie-rennie> ,
+        <https://journal.metagov.org/people/joshua-tan> ,
+        <https://journal.metagov.org/people/michael-zargham> ,
+        <https://journal.metagov.org/people/seth-frey> ;
+.
+
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0/reference/1>
+    a mgj:Reference ;
+    dcterms:creator "Joshua Tan" ;
+    dcterms:date "2025" ;
+    dcterms:identifier "https://journal.metagov.org/2025/08/09/metagov-journal.html" ;
+    dcterms:title "Introducing the Metagov Journal" ;
+.
+
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0/reference/2>
+    a mgj:Reference ;
+    dcterms:creator
+        "Ilan Ben-Meir" ,
+        "Michael Zargham" ;
+    dcterms:date "2024" ;
+    dcterms:identifier "https://zenodo.org/records/15122312" ;
+    dcterms:title "Protocols and Institutions" ;
+.
+
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0/reference/3>
+    a mgj:Reference ;
+    dcterms:creator "Michael Zargham" ;
+    dcterms:date "2023" ;
+    dcterms:identifier "https://zenodo.org/records/10609125" ;
+    dcterms:title "What Constitutes a Constitution" ;
+.
+
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0/reference/4>
+    a mgj:Reference ;
+    dcterms:creator "Jason Potts" ;
+    dcterms:date "2017" ;
+    dcterms:identifier "https://www.tandfonline.com/doi/abs/10.1080/08109028.2017.1386949" ;
+    dcterms:title "A Journal is a Club" ;
+.
+
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0/stakeholder/1>
+    a mgj:Stakeholder ;
+    mgj:hasRole <https://journal.metagov.org/roles/editor> ;
+    mgj:roleLabel "Editor" ;
+    mgj:stakeholderAgent <https://journal.metagov.org/people/joshua-tan> ;
+    mgj:stakeholderResponsibilities "Lead editor; coordinates review and publication." ;
+.
+
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0/stakeholder/2>
+    a mgj:Stakeholder ;
+    mgj:hasRole <https://journal.metagov.org/roles/editor> ;
+    mgj:roleLabel "Editor" ;
+    mgj:stakeholderAgent <https://journal.metagov.org/people/michael-zargham> ;
+    mgj:stakeholderResponsibilities "Co-editor; infrastructure and operations." ;
+.
+
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0/stakeholder/3>
+    a mgj:Stakeholder ;
+    mgj:hasRole <https://journal.metagov.org/roles/research-director> ;
+    mgj:roleLabel "Research Director" ;
+    mgj:stakeholderAgent <https://journal.metagov.org/people/seth-frey> ;
+    mgj:stakeholderResponsibilities "Provides oversight; cognitive-science perspective." ;
+.
+
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0/stakeholder/4>
+    a mgj:Stakeholder ;
+    mgj:hasRole <https://journal.metagov.org/roles/research-director> ;
+    mgj:roleLabel "Research Director" ;
+    mgj:stakeholderAgent <https://journal.metagov.org/people/ellie-rennie> ;
+    mgj:stakeholderResponsibilities "Provides oversight; digital-ethnography perspective." ;
+.
+
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0/stakeholder/5>
+    a mgj:Stakeholder ;
+    mgj:hasRole <https://journal.metagov.org/roles/organizational-home> ;
+    mgj:roleLabel "Organizational Home" ;
+    mgj:stakeholderAgent <https://journal.metagov.org/orgs/metagov> ;
+    mgj:stakeholderResponsibilities "Provides nonprofit infrastructure and mission alignment." ;
+.
+
+<https://journal.metagov.org/roles/editor>
+    a skos:Concept ;
+    skos:inScheme mgj:RoleType ;
+    skos:prefLabel "Editor" ;
+.
+
+<https://journal.metagov.org/roles/research-director>
+    a skos:Concept ;
+    skos:inScheme mgj:RoleType ;
+    skos:prefLabel "Research Director" ;
+.

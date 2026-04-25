@@ -1,0 +1,49 @@
+# Q3 — Environmental factors: per-question SHACL shapes
+
+@prefix mgj:     <https://journal.metagov.org/ns/mgj#> .
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+
+
+<https://journal.metagov.org/shapes/q3-environment>
+    a owl:Ontology ;
+    dcterms:title   "Q3 Environmental Factors Shapes" ;
+    owl:imports     <https://journal.metagov.org/ns/mgj> .
+
+
+mgj:Q3NarrativeShape
+    a sh:NodeShape ;
+    sh:targetClass mgj:Submission ;
+    sh:property [
+        sh:path      mgj:q3Narrative ;
+        sh:datatype  xsd:string ;
+        sh:minLength 1 ;
+        sh:maxCount  1 ;
+        sh:message   "Q3 narrative must be a non-empty string." ;
+    ] .
+
+
+mgj:EnvironmentalFactorShape
+    a sh:NodeShape ;
+    sh:targetClass mgj:EnvironmentalFactor ;
+
+    sh:property [
+        sh:path     mgj:lessigModality ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:in       ( mgj:Law mgj:Norms mgj:Markets mgj:Architecture ) ;
+        sh:message  "Every EnvironmentalFactor must be typed by exactly one Lessig modality (Law, Norms, Markets, Architecture)." ;
+    ] ;
+
+    sh:property [
+        sh:path      mgj:factorDescription ;
+        sh:datatype  xsd:string ;
+        sh:minCount  1 ;
+        sh:maxCount  1 ;
+        sh:minLength 1 ;
+        sh:message   "Every EnvironmentalFactor must have a description." ;
+    ] .

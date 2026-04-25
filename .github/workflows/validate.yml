@@ -1,0 +1,57 @@
+name: validate
+
+on:
+  push:
+    branches-ignore: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+
+      - name: Install package
+        run: pip install -e .
+
+      - name: Run pytest
+        run: pip install pytest && pytest -v
+
+      - name: SHACL-validate every submission
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          for d in submissions/*/; do
+            slug=$(basename "$d")
+            if [ -f "$d/instance.ttl" ]; then
+              echo "::group::validate $slug"
+              mgj validate "$slug"
+              echo "::endgroup::"
+            fi
+          done
+
+      - name: Compile staleness check
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          for d in submissions/*/; do
+            slug=$(basename "$d")
+            if [ -f "$d/instance.ttl" ]; then
+              mgj compile "$slug"
+            fi
+          done
+          mgj wiki
+          if ! git diff --exit-code -- submissions/*/compiled.md wiki/; then
+            echo "::error::compiled.md / wiki/ is stale — re-run mgj compile and mgj wiki and commit the result"
+            exit 1
+          fi

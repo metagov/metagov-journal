@@ -1,0 +1,51 @@
+name: compile-and-publish
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+
+      - name: Install package
+        run: pip install -e .
+
+      - name: Recompile compiled.md for every submission
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          for d in submissions/*/; do
+            slug=$(basename "$d")
+            if [ -f "$d/instance.ttl" ]; then
+              mgj compile "$slug"
+            fi
+          done
+
+      - name: Regenerate wiki
+        run: mgj wiki
+
+      - name: Commit refreshed artifacts (if any changed)
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -n "$(git status --porcelain submissions/*/compiled.md wiki/)" ]; then
+            git config user.name "metagov-journal-bot"
+            git config user.email "bot@metagov.org"
+            git add submissions/*/compiled.md wiki/
+            git commit -m "auto-compile: refresh compiled.md and wiki"
+            git push
+          else
+            echo "no changes to commit"
+          fi

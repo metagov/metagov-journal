@@ -1,0 +1,65 @@
+# Q4 — Constitution: per-question SHACL shapes
+
+@prefix mgj:     <https://journal.metagov.org/ns/mgj#> .
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+
+
+<https://journal.metagov.org/shapes/q4-constitution>
+    a owl:Ontology ;
+    dcterms:title   "Q4 Constitution Shapes" ;
+    owl:imports     <https://journal.metagov.org/ns/mgj> .
+
+
+mgj:Q4NarrativeShape
+    a sh:NodeShape ;
+    sh:targetClass mgj:Submission ;
+    sh:property [
+        sh:path      mgj:q4Narrative ;
+        sh:datatype  xsd:string ;
+        sh:minLength 1 ;
+        sh:maxCount  1 ;
+        sh:message   "Q4 narrative must be a non-empty string." ;
+    ] .
+
+
+mgj:ConstitutionalElementShape
+    a sh:NodeShape ;
+    sh:targetClass mgj:ConstitutionalElement ;
+
+    sh:property [
+        sh:path      mgj:elementLabel ;
+        sh:datatype  xsd:string ;
+        sh:minCount  1 ;
+        sh:maxCount  1 ;
+        sh:minLength 1 ;
+        sh:message   "Every ConstitutionalElement must have a label." ;
+    ] ;
+
+    sh:property [
+        sh:path      mgj:elementDescription ;
+        sh:datatype  xsd:string ;
+        sh:minCount  1 ;
+        sh:maxCount  1 ;
+        sh:minLength 1 ;
+        sh:message   "Every ConstitutionalElement must have a description." ;
+    ] ;
+
+    sh:property [
+        sh:path     mgj:elementType ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:in       ( mgj:Bylaw mgj:Norm mgj:DecisionProcedure mgj:DisputeResolution mgj:AmendmentProcess ) ;
+        sh:message  "Every ConstitutionalElement must be typed by exactly one ConstitutionalElementType." ;
+    ] ;
+
+    sh:property [
+        sh:path     mgj:elementSourceURL ;
+        sh:datatype xsd:anyURI ;
+        sh:maxCount 1 ;
+        sh:message  "If present, elementSourceURL must be a single URI." ;
+    ] .
