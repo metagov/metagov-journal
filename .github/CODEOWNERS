@@ -1,0 +1,9 @@
+# GitHub CODEOWNERS for the Metagov Journal
+# https://docs.github.com/en/repositories/managing-your-repositories-settings-and-security/customizing-your-repository/about-code-owners
+#
+# @mzargham is the lead editor and is automatically requested for review on
+# every PR by default. As the editorial group expands, refine the patterns
+# below (e.g. submissions/* could route to specific submission authors;
+# ontology/ could route to the framework maintainers).
+
+* @mzargham
