@@ -10,6 +10,11 @@ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
     foaf:name "Joshua Tan" ;
 .
 
+<https://journal.metagov.org/people/liz-barry>
+    a foaf:Person ;
+    foaf:name "Liz Barry" ;
+.
+
 <https://journal.metagov.org/people/michael-zargham>
     a foaf:Person ;
     foaf:name "Michael Zargham" ;

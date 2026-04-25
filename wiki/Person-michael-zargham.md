@@ -10,7 +10,7 @@
 
 ## Stakeholder roles
 
-- **Editor** in [The Metagov Journal](Institution-metagov-journal)
+- **Lead Editor** in [The Metagov Journal](Institution-metagov-journal)
 
 ## Origin events
 

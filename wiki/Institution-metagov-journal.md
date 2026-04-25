@@ -10,14 +10,15 @@ The Metagov Journal produces and maintains a peer-reviewed commons of institutio
 
 ## 2. Stakeholders and roles
 
-Authors document institutions they understand deeply, answering the catechism and providing supporting materials. Reviewers evaluate submissions for completeness, clarity, and contribution to knowledge. Editors (initially Joshua Tan as lead, with Michael Zargham) coordinate review processes, make publication decisions, and maintain infrastructure. Readers access documented patterns for learning and adaptation. Metagov provides organizational home and alignment with digital self-governance mission, with research directors Seth Frey and Ellie Rennie providing oversight.
+Authors document institutions they understand deeply, answering the catechism and providing supporting materials. Reviewers evaluate submissions for completeness, clarity, and contribution to knowledge. Michael Zargham serves as lead editor, having built and now maintaining the journal's RDF-native pipeline. Joshua Tan, Seth Frey, and Ellie Rennie form the founding editor group, contributing platform-governance, cognitive-science, and digital-ethnography perspectives respectively. Readers access documented patterns for learning and adaptation. Liz Barry, Executive Director of Metagov, provides organizational sponsorship — the journal program exists as a result of her support. Metagov itself provides the nonprofit home and mission alignment.
 
 ### Stakeholders
 
-- **Editor**: Joshua Tan — Lead editor; coordinates review and publication.
-- **Editor**: Michael Zargham — Co-editor; infrastructure and operations.
-- **Research Director**: Seth Frey — Provides oversight; cognitive-science perspective.
-- **Research Director**: Ellie Rennie — Provides oversight; digital-ethnography perspective.
+- **Lead Editor**: Michael Zargham — Built and maintains the journal's RDF-native pipeline; coordinates review and publication.
+- **Founding Editor**: Joshua Tan — Co-founder and original driver; convened the editorial group; provides platform-governance perspective.
+- **Founding Editor**: Seth Frey — Founding editor; provides cognitive-science perspective.
+- **Founding Editor**: Ellie Rennie — Founding editor; provides digital-ethnography perspective.
+- **Organizational Sponsor**: Liz Barry — Executive Director of Metagov; the journal program exists as a result of her organizational support.
 - **Organizational Home**: Metagov — Provides nonprofit infrastructure and mission alignment.
 
 ## 3. Environmental factors
@@ -67,11 +68,11 @@ Primary activity occurs at github.com/metagov/journal — submissions, reviews, 
 
 ## 6. Author relationship
 
-As author of this draft, I am a systems engineer and protocol architect with deep experience in open source communities — my role in Metagov is often to map systems and provide operational policy recommendations. Joshua Tan, Metagov co-founder and journal's primary driver, provides vision and organizational support. We both serve on Metagov's board, creating alignment but also potential conflicts of interest.
+As author of this draft and current lead editor, I (Michael Zargham) am a systems engineer and protocol architect with deep experience in open source communities — my role in Metagov is often to map systems and provide operational policy recommendations. I built the RDF-native pipeline that this submission demonstrates and continue to refine it. Joshua Tan, Metagov co-founder and the journal's original driver, provides vision and organizational continuity. Joshua and I both serve on Metagov's board, creating alignment but also potential conflicts of interest. The founding editorial group's review of this self-submission is necessarily reflexive.
 
-*Authored by **Michael Zargham** — co-editor and board member.*
+*Authored by **Michael Zargham** — lead editor.*
 
-*Disclosure:* Author serves on Metagov's board with Joshua Tan; potential conflict of interest. Bootstrap submission receives review from fellow research directors rather than external reviewers. Blind spots likely include overemphasis on technical mechanisms.
+*Disclosure:* Author (Zargham) is the current lead editor and built the journal's tooling; potential conflict of interest. Author also serves on Metagov's board with Joshua Tan. Bootstrap submission receives review from fellow founding editors rather than external reviewers. Blind spots likely include overemphasis on technical mechanisms and the perspective of the tool-builder.
 
 ## 7. Origins
 

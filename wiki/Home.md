@@ -17,6 +17,7 @@
 
 - [Ellie Rennie](Person-ellie-rennie)
 - [Joshua Tan](Person-joshua-tan)
+- [Liz Barry](Person-liz-barry)
 - [Michael Zargham](Person-michael-zargham)
 - [Seth Frey](Person-seth-frey)
 
