@@ -136,6 +136,23 @@ def _render_home(g: Graph) -> str:
     lines.append(f"<!-- compiler: {WIKI_COMPILER_ID} v{WIKI_COMPILER_VERSION} -->")
     lines.append("")
 
+    # Engagement section — links to the hand-authored pages that describe
+    # how readers, authors, reviewers, and contributors participate. Page
+    # files (Reading.md, Submitting.md, Reviewing.md, Contributing.md) are
+    # checked into wiki/ in the repo and published alongside the auto-
+    # generated catalog.
+    lines.extend(
+        [
+            "## How to engage",
+            "",
+            "- [Reading the journal](Reading) — discover and read institutional specifications",
+            "- [Submitting a specification](Submitting) — author and submit a new specification",
+            "- [Participating in review](Reviewing) — peer-review open submissions",
+            "- [Contributing to the framework](Contributing) — evolve the catechism, criteria, and tools",
+            "",
+        ]
+    )
+
     institutions = _institution_index(g)
     lines.append("## Institutions")
     lines.append("")
