@@ -20,6 +20,8 @@ The technical approach used in this repository — schema-driven Git+RDF authori
 
 Proper attribution matters to us: the Metagov Journal exists in the form it does — schema-first, deterministic, content-addressable — because of those prior contributions. The catechism-as-schema approach, the determinism invariant for compiled artifacts, and the PROV-O extraction provenance were developed in the engineering-documentation context first and ported here under the same author's continuity.
 
+The philosophical articulation of *why* this approach matters — the co-constitution of human practice and technology through machine-readable knowledge infrastructure — is given in **Rennie et al. (2026), ["Building the Loop: The Role of Ethnography in Artificial Organisational Intelligence"](https://doi.org/10.1111/epic.70009)** (*EPIC Proceedings* 2025). The paper introduces Knowledge Organisation Infrastructure (KOI) as a protocol for stitching together disparate systems and practices without homogenisation; this journal is one application of that protocol to peer-reviewed institutional documentation. Ellie Rennie and Michael Zargham, both founding contributors to this journal, are co-authors on that work alongside the broader collaboration with Metagov and Dynamical Systems Group.
+
 ## For Authors
 
 To submit institutional documentation:
@@ -127,9 +129,11 @@ The full structured stakeholder graph for the journal is canonical in [`submissi
 & Phelan, S. (2020). ["The Innovator's Catechism: Operations orders for use by early-stage innovation teams"](https://zenodo.org/record/4383230) *Research Practice Methods*.
 
 ### Core Framework Papers
-- Zargham, M. & Ben-Meir, G. (2024). ["Protocols and Institutions"](https://zenodo.org/records/15122312) appear in *Web3 Blockchain Economic Theory,* edited by Melanie Swan, Soichiro Takagi, and Frank Witte.
-- Zargham, M., Alston,E.,Nabben, K, & Ben-Meir, I.(2023) ["What Constitutes a Constitution"](https://zenodo.org/records/10609125) *Metagov Working Papers*.
-- Potts, J., Hartley, J., Montgomery, L., Neylon, C., & Rennie, E. (2017). ["A Journal is a Club: A New Economic Model for Scholarly Publishing."](https://www.tandfonline.com/doi/abs/10.1080/08109028.2017.1386949) *Prometheus*, 35(1), 75-92.
+
+- Zargham, M. & Ben-Meir, I. (2024). ["Protocols and Institutions"](https://zenodo.org/records/15122312) appears in *Web3 Blockchain Economic Theory,* edited by Melanie Swan, Soichiro Takagi, and Frank Witte.
+- Rennie, E., Nabben, K., Zargham, M., Potts, J., Coco, B.A., Miller, L., & Green, M. (2026). ["Building the Loop: The Role of Ethnography in Artificial Organisational Intelligence"](https://doi.org/10.1111/epic.70009). *EPIC Proceedings* 2025(1): 223–35. Introduces Artificial Organisational Intelligence (AOI) and Knowledge Organisation Infrastructure (KOI) — the philosophical and protocol underpinnings of human-practice-and-technology co-constitution that this journal applies.
+- Zargham, M., Alston, E., Nabben, K., & Ben-Meir, I. (2023). ["What Constitutes a Constitution"](https://zenodo.org/records/10609125). *Metagov Working Papers*.
+- Potts, J., Hartley, J., Montgomery, L., Neylon, C., & Rennie, E. (2017). ["A Journal is a Club: A New Economic Model for Scholarly Publishing"](https://www.tandfonline.com/doi/abs/10.1080/08109028.2017.1386949). *Prometheus*, 35(1), 75–92.
 
 ### Metagov Context
 - Tan, J. (2025). ["Introducing the Metagov Journal: Publishing Living Institutions."](https://journal.metagov.org/2025/08/09/metagov-journal.html)
