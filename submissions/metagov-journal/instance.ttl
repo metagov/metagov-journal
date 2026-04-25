@@ -25,7 +25,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/constitution/1> ,
         <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/constitution/2> ,
         <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/constitution/3> ,
-        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/constitution/4> ;
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/constitution/4> ,
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/constitution/5> ;
     mgj:hasEnvironmentalFactor
         <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/factor/1> ,
         <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/factor/2> ,
@@ -44,7 +45,10 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/reference/1> ,
         <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/reference/2> ,
         <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/reference/3> ,
-        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/reference/4> ;
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/reference/4> ,
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/reference/5> ,
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/reference/6> ,
+        <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/reference/7> ;
     mgj:hasStakeholder
         <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/stakeholder/1> ,
         <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/stakeholder/2> ,
@@ -56,7 +60,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/stakeholder/8> ;
     mgj:operatesUnder <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/legal/1> ;
     mgj:q1Narrative "The Metagov Journal produces and maintains a peer-reviewed commons of institutional knowledge. Its stable pattern involves practitioners documenting living institutions through structured catechisms, peers reviewing these documentations for completeness and clarity, and the community accumulating reusable organizational patterns. Success manifests as a growing repository of institutional specifications that practitioners reference when designing new organizations or evolving existing ones. The institution functions properly when submissions flow regularly, reviews maintain quality standards, and documented patterns get reused across contexts." ;
-    mgj:q2Narrative "Authors document institutions they understand deeply, answering the catechism and providing supporting materials. Reviewers evaluate submissions for completeness, clarity, and contribution to knowledge. Joshua Tan, Metagov co-founder, is credited with the founding idea — convening the editorial group and articulating the gap a peer-reviewed venue for living-institution documentation could fill. Ilan Ben-Meir and Natalia Dashan, founding contributors, helped develop the conceptual framework — processing Tan's brainstorming into a concrete design Michael Zargham could implement. Zargham serves as lead editor and is credited with the design and development of the catechism framework, review processes, and RDF-native infrastructure. Seth Frey and Ellie Rennie complete the founding editor group with cognitive-science and digital-ethnography perspectives respectively. Readers access documented patterns for learning and adaptation. Liz Barry, Executive Director of Metagov, is responsible for resource allocation and ongoing supervision — assigning staff time, overseeing operations, and ensuring accountability for outcomes; the journal program exists as a result of her organizational support. Metagov itself provides the nonprofit home and mission alignment." ;
+    mgj:q2Narrative "The journal recognizes five distinct modes of engagement. Readers access documented patterns for learning and adaptation. Authors document institutions they participate in by answering the catechism. Reviewers peer-review open submissions on substance. Editors coordinate review and make publication decisions. Infrastructure Contributors evolve the schema, tooling, and AI facilitation that processes every submission — an open role flowing through GitHub-native issue and PR workflows under code-owner review. Joshua Tan, Metagov co-founder, is credited with the founding idea — convening the editorial group and articulating the gap a peer-reviewed venue for living-institution documentation could fill. Ilan Ben-Meir and Natalia Dashan, founding contributors, helped develop the conceptual framework — processing Tan's brainstorming into a concrete design Michael Zargham could implement. Zargham serves as lead editor and is credited with the design and development of the catechism framework, review processes, and RDF-native infrastructure. Seth Frey and Ellie Rennie complete the founding editor group with cognitive-science and digital-ethnography perspectives respectively. Liz Barry, Executive Director of Metagov, is responsible for resource allocation and ongoing supervision — assigning staff time, overseeing operations, and ensuring accountability for outcomes; the journal program exists as a result of her organizational support. Metagov itself provides the nonprofit home and mission alignment." ;
     mgj:q3Narrative "The journal operates within overlapping contexts. Technically, it depends on GitHub for version control and collaboration, technical platforms for archival storage and DOIs. Academically, it bridges scholarly publishing conventions with open-source software practices. Legally, it operates under Metagov's nonprofit structure. Normatively, it inherits from both peer review traditions and GitHub collaboration patterns. Economically, it functions as a scholarly club good where contribution enables access to curated knowledge." ;
     mgj:q4Narrative "The foundational rules emerge from three layers. The Catechism (nine questions) structures all submissions, creating comparable documentation. The Review Criteria define evaluation standards — completeness, clarity, evidence, viability, and contribution. The GitHub Flow establishes procedural rules — fork, submit PR, review, revise, merge." ;
     mgj:q5Narrative "The institution operates across connected venues. Primary activity occurs at github.com/metagov/metagov-journal — submissions, reviews, and discussions. The auto-generated wiki is the navigable reader's view, with cross-linked Institution, Person, and Organization pages plus engagement docs. Stable archival citations are planned via Zenodo for DOI assignment. The Metagov website offers organizational context. Joshua Tan's introductory blog post articulates the founding vision." ;
@@ -117,6 +121,13 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     mgj:elementDescription "Constructive feedback tone, reasonable review timelines, transparency in decision-making." ;
     mgj:elementLabel "Editorial Norms" ;
     mgj:elementType mgj:Norm ;
+.
+
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0/constitution/5>
+    a mgj:ConstitutionalElement ;
+    mgj:elementDescription "The journal recognizes five distinct modes of engagement: Reader, Author, Reviewer, Editor, and Infrastructure Contributor. Reader, Author, Reviewer, and Infrastructure Contributor are open roles that anyone can take through the GitHub-native workflow. Editor is an appointed role; recurring substantive infrastructure contributors may be invited into the editorial group over time. The role taxonomy is canonical in the journal's own RDF and surfaced in the wiki engagement docs and contributing.md." ;
+    mgj:elementLabel "Engagement Modes" ;
+    mgj:elementType mgj:Bylaw ;
 .
 
 <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/evolution/1>
@@ -235,6 +246,35 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     dcterms:date "2017" ;
     dcterms:identifier "https://www.tandfonline.com/doi/abs/10.1080/08109028.2017.1386949" ;
     dcterms:title "A Journal is a Club" ;
+.
+
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0/reference/5>
+    a mgj:Reference ;
+    dcterms:creator "OpenMBEE Project" ;
+    dcterms:identifier "https://www.openmbee.org/" ;
+    dcterms:title "OpenMBEE: Open Model-Based Engineering Environment" ;
+.
+
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0/reference/6>
+    a mgj:Reference ;
+    dcterms:creator "Dynamical Systems Group" ;
+    dcterms:identifier "https://www.dynamicalsystemsgroup.com/" ;
+    dcterms:title "Dynamical Systems Group" ;
+.
+
+<https://journal.metagov.org/submissions/metagov-journal/v1.0.0/reference/7>
+    a mgj:Reference ;
+    dcterms:creator
+        "Brooke Ann Coco" ,
+        "Ellie Rennie" ,
+        "Jason Potts" ,
+        "Kelsie Nabben" ,
+        "Luke Miller" ,
+        "Matthew Green" ,
+        "Michael Zargham" ;
+    dcterms:date "2026" ;
+    dcterms:identifier "https://doi.org/10.1111/epic.70009" ;
+    dcterms:title "Building the Loop: The Role of Ethnography in Artificial Organisational Intelligence" ;
 .
 
 <https://journal.metagov.org/submissions/metagov-journal/v1.0.0/stakeholder/1>

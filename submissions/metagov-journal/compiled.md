@@ -10,7 +10,7 @@ The Metagov Journal produces and maintains a peer-reviewed commons of institutio
 
 ## 2. Stakeholders and roles
 
-Authors document institutions they understand deeply, answering the catechism and providing supporting materials. Reviewers evaluate submissions for completeness, clarity, and contribution to knowledge. Joshua Tan, Metagov co-founder, is credited with the founding idea — convening the editorial group and articulating the gap a peer-reviewed venue for living-institution documentation could fill. Ilan Ben-Meir and Natalia Dashan, founding contributors, helped develop the conceptual framework — processing Tan's brainstorming into a concrete design Michael Zargham could implement. Zargham serves as lead editor and is credited with the design and development of the catechism framework, review processes, and RDF-native infrastructure. Seth Frey and Ellie Rennie complete the founding editor group with cognitive-science and digital-ethnography perspectives respectively. Readers access documented patterns for learning and adaptation. Liz Barry, Executive Director of Metagov, is responsible for resource allocation and ongoing supervision — assigning staff time, overseeing operations, and ensuring accountability for outcomes; the journal program exists as a result of her organizational support. Metagov itself provides the nonprofit home and mission alignment.
+The journal recognizes five distinct modes of engagement. Readers access documented patterns for learning and adaptation. Authors document institutions they participate in by answering the catechism. Reviewers peer-review open submissions on substance. Editors coordinate review and make publication decisions. Infrastructure Contributors evolve the schema, tooling, and AI facilitation that processes every submission — an open role flowing through GitHub-native issue and PR workflows under code-owner review. Joshua Tan, Metagov co-founder, is credited with the founding idea — convening the editorial group and articulating the gap a peer-reviewed venue for living-institution documentation could fill. Ilan Ben-Meir and Natalia Dashan, founding contributors, helped develop the conceptual framework — processing Tan's brainstorming into a concrete design Michael Zargham could implement. Zargham serves as lead editor and is credited with the design and development of the catechism framework, review processes, and RDF-native infrastructure. Seth Frey and Ellie Rennie complete the founding editor group with cognitive-science and digital-ethnography perspectives respectively. Liz Barry, Executive Director of Metagov, is responsible for resource allocation and ongoing supervision — assigning staff time, overseeing operations, and ensuring accountability for outcomes; the journal program exists as a result of her organizational support. Metagov itself provides the nonprofit home and mission alignment.
 
 ### Stakeholders
 
@@ -51,6 +51,7 @@ The foundational rules emerge from three layers. The Catechism (nine questions) 
 
 - **Catechism**: Nine-question framework that structures every submission, creating comparable documentation.
 - **Review Criteria**: Evaluation standards — completeness, clarity, evidence, viability, contribution.
+- **Engagement Modes**: The journal recognizes five distinct modes of engagement: Reader, Author, Reviewer, Editor, and Infrastructure Contributor. Reader, Author, Reviewer, and Infrastructure Contributor are open roles that anyone can take through the GitHub-native workflow. Editor is an appointed role; recurring substantive infrastructure contributors may be invited into the editorial group over time. The role taxonomy is canonical in the journal's own RDF and surfaced in the wiki engagement docs and contributing.md.
 
 ### Norm
 
@@ -104,3 +105,6 @@ Foundational documents and academic references that ground the journal's design 
 2. Ilan Ben-Meir, Michael Zargham (2024). [Protocols and Institutions](https://zenodo.org/records/15122312)
 3. Michael Zargham (2023). [What Constitutes a Constitution](https://zenodo.org/records/10609125)
 4. Jason Potts (2017). [A Journal is a Club](https://www.tandfonline.com/doi/abs/10.1080/08109028.2017.1386949)
+5. OpenMBEE Project. [OpenMBEE: Open Model-Based Engineering Environment](https://www.openmbee.org/)
+6. Dynamical Systems Group. [Dynamical Systems Group](https://www.dynamicalsystemsgroup.com/)
+7. Brooke Ann Coco, Ellie Rennie, Jason Potts, Kelsie Nabben, Luke Miller, Matthew Green, Michael Zargham (2026). [Building the Loop: The Role of Ethnography in Artificial Organisational Intelligence](https://doi.org/10.1111/epic.70009)

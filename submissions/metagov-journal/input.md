@@ -8,7 +8,15 @@ The Metagov Journal produces and maintains a peer-reviewed commons of institutio
 
 ## 2. Who are the stakeholders and what are their roles?
 
-**Authors** document institutions they understand deeply, answering the catechism and providing supporting materials. **Reviewers** evaluate submissions for completeness, clarity, and contribution to knowledge. **Joshua Tan**, Metagov co-founder, is credited with the **founding idea** — convening the editorial group and articulating the gap a peer-reviewed venue for living-institution documentation could fill. **Ilan Ben-Meir** and **Natalia Dashan**, **founding contributors**, helped develop the conceptual framework — processing Tan's brainstorming into a concrete design Michael Zargham could implement. **Zargham** serves as **lead editor** and is credited with the **design and development** of the catechism framework, review processes, and RDF-native infrastructure. **Seth Frey** and **Ellie Rennie** complete the **founding editor group** with cognitive-science and digital-ethnography perspectives respectively. **Readers** access documented patterns for learning and adaptation. **Liz Barry**, Executive Director of Metagov, is responsible for **resource allocation and ongoing supervision** — assigning staff time, overseeing operations, and ensuring accountability for outcomes; the journal program exists as a result of her organizational support. **Metagov** itself provides the nonprofit home and mission alignment. Participation is open—anyone can submit, experienced practitioners become reviewers, and active contributors join editorial roles.
+The journal recognizes **five distinct modes of engagement**:
+
+- **Readers** access documented patterns for learning and adaptation.
+- **Authors** document institutions they participate in by answering the catechism.
+- **Reviewers** peer-review open submissions on substance.
+- **Editors** coordinate review and make publication decisions.
+- **Infrastructure Contributors** evolve the schema, tooling, and AI facilitation that processes every submission — an open role flowing through GitHub-native issue and PR workflows under code-owner review.
+
+**Joshua Tan**, Metagov co-founder, is credited with the **founding idea** — convening the editorial group and articulating the gap a peer-reviewed venue for living-institution documentation could fill. **Ilan Ben-Meir** and **Natalia Dashan**, **founding contributors**, helped develop the conceptual framework — processing Tan's brainstorming into a concrete design Michael Zargham could implement. **Zargham** serves as **lead editor** and is credited with the **design and development** of the catechism framework, review processes, and RDF-native infrastructure. **Seth Frey** and **Ellie Rennie** complete the **founding editor group** with cognitive-science and digital-ethnography perspectives respectively. **Liz Barry**, Executive Director of Metagov, is responsible for **resource allocation and ongoing supervision** — assigning staff time, overseeing operations, and ensuring accountability for outcomes; the journal program exists as a result of her organizational support. **Metagov** itself provides the nonprofit home and mission alignment. Reader, author, reviewer, and infrastructure-contributor roles are open to anyone; editorial appointment is by current editorial-group decision.
 
 ## 3. What environmental factors shape the institution?
 
@@ -16,7 +24,7 @@ The journal operates within overlapping contexts. **Technically**, it depends on
 
 ## 4. What constitutes the institution's constitution?
 
-The foundational rules emerge from three layers. **The Catechism** (nine questions) structures all submissions, creating comparable documentation. **The Review Criteria** define evaluation standards—completeness, clarity, evidence, viability, and contribution. **The GitHub Flow** establishes procedural rules—fork, submit PR, review, revise, merge. These formal protocols interact with informal norms developing through practice: constructive feedback tone, reasonable review timelines, and transparency in decision-making. Constitutional change happens through pull requests to framework documents, discussed publicly and merged by editors. This constitution is deliberately minimal, allowing practices to emerge through use.
+The foundational rules emerge from four layers. **The Catechism** (nine questions) structures all submissions, creating comparable documentation. **The Review Criteria** define evaluation standards — completeness, clarity, evidence, viability, and contribution. **The GitHub Flow** establishes procedural rules — fork, submit PR, review, revise, merge. **The Engagement Modes** taxonomy formally recognizes five distinct roles (Reader, Author, Reviewer, Editor, Infrastructure Contributor); the first four follow standard scholarly practice while Infrastructure Contributor is an explicit acknowledgement that the schema, tooling, and AI facilitation are themselves open to community contribution. These formal protocols interact with informal norms developing through practice: constructive feedback tone, reasonable review timelines, and transparency in decision-making. Constitutional change happens through pull requests to framework documents, discussed publicly and merged by editors. This constitution is deliberately minimal, allowing practices to emerge through use.
 
 ## 5. Where are the field sites?
 
@@ -36,9 +44,12 @@ Evolution operates through multiple mechanisms. **Immediate adaptation** happens
 
 ## 9. What references support this documentation?
 
-- Tan, J. (2025). ["Introducing the Metagov Journal"](https://journal.metagov.org/2025/08/09/metagov-journal.html) - Founding vision and motivation
-- [GitHub Repository](https://github.com/metagov/metagov-journal) - Living infrastructure and version history
-- [Metagov Organization](https://metagov.org) - Organizational home and mission alignment
-- Zargham & Ben-Meir (2024). ["Protocols and Institutions"](https://zenodo.org/records/15122312) - Institutional Economics and Cybernetcs.
-- Zargham et al. (2023). ["What Constitutes a Constitution"](https://zenodo.org/records/10609125) - Intersection between technology and legal theory.
-- Potts et al. (2017). ["A Journal is a Club"](https://www.tandfonline.com/doi/abs/10.1080/08109028.2017.1386949) - Initiates the discussion of a journal in institutional economic terms.
+- Tan, J. (2025). ["Introducing the Metagov Journal"](https://journal.metagov.org/2025/08/09/metagov-journal.html) — founding vision and motivation
+- Rennie, E., Nabben, K., Zargham, M., Potts, J., Coco, B.A., Miller, L., & Green, M. (2026). ["Building the Loop: The Role of Ethnography in Artificial Organisational Intelligence"](https://doi.org/10.1111/epic.70009). *EPIC Proceedings* 2025(1): 223–35 — articulates Knowledge Organisation Infrastructure (KOI), the protocol this journal applies to peer-reviewed institutional documentation
+- Zargham, M. & Ben-Meir, I. (2024). ["Protocols and Institutions"](https://zenodo.org/records/15122312) — institutional economics and cybernetics
+- Zargham, M., et al. (2023). ["What Constitutes a Constitution"](https://zenodo.org/records/10609125) — intersection between technology and legal theory
+- Potts, J., et al. (2017). ["A Journal is a Club"](https://www.tandfonline.com/doi/abs/10.1080/08109028.2017.1386949) — initiates the discussion of a journal in institutional-economic terms
+- [OpenMBEE](https://www.openmbee.org/) — methodological lineage: formal documentation and Model Management Systems on Git+RDF
+- [Dynamical Systems Group](https://www.dynamicalsystemsgroup.com/) — methodological lineage: TRDs, RTMs, and MOSA Product Management adapted here for institutional documentation
+- [GitHub repository](https://github.com/metagov/metagov-journal) — living infrastructure and version history
+- [Metagov organization](https://metagov.org) — organizational home and mission alignment
