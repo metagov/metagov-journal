@@ -484,13 +484,22 @@ def reference_add(
     slug: str = typer.Argument(...),
     title: str = typer.Option(..., "--title", "-t"),
     identifier: str = typer.Option(
-        ..., "--identifier", "-i", help="DOI or canonical URL"
+        ..., "--identifier", "-i", help="DOI URL preferred (e.g. https://doi.org/10.xxxx/yy)"
     ),
     creators: str = typer.Option(
-        None, "--creators", help="Comma-separated author names"
+        None,
+        "--creators",
+        help=(
+            "Author byline as a single literal in the order the citation should "
+            "render — e.g. 'Smith, J., Jones, A., & Brown, R.'. Stored verbatim "
+            "as one dcterms:creator literal so author order is preserved."
+        ),
     ),
     date_: str = typer.Option(None, "--date"),
 ) -> None:
+    """Add a Reference. The author byline is stored as a single literal so
+    citation order is preserved (RDF triples are unordered, so multi-creator
+    references would otherwise lose their authorship sequence)."""
     with with_mutation(slug, question=9) as g:
         sub = get_submission_iri(g, slug)
         version = get_submission_version(g, slug)
@@ -499,9 +508,8 @@ def reference_add(
         g.add((node, RDF.type, MGJ.Reference))
         g.add((node, DCTERMS.title, Literal(title)))
         g.add((node, DCTERMS.identifier, Literal(identifier)))
-        if creators:
-            for c in [c.strip() for c in creators.split(",") if c.strip()]:
-                g.add((node, DCTERMS.creator, Literal(c)))
+        if creators and creators.strip():
+            g.add((node, DCTERMS.creator, Literal(creators.strip())))
         if date_:
             g.add((node, DCTERMS.date, Literal(date_)))
         g.add((sub, MGJ.hasReference, node))

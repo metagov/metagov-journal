@@ -26,3 +26,6 @@
 ## Organizations
 
 - [Metagov](Organization-metagov)
+- [Metagov Community](Organization-metagov-community)
+- [Metagov Research Directors](Organization-metagov-research-directors)
+- [Metagov Staff](Organization-metagov-staff)
